@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "phlask-pyrebase",
+  "private_key_id": "01f3afa70fee98914b509023e143c72483d87681",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC15G+I7Z4xM2f5\nsIDCMxnUC7Oj036cpp8WvuSfO9B24Egz/tupwRYNdGo1bWyUIdFWwL9e5Rycz229\n7TB1rKrKEK0yGQL/ZYuZ81reLddaB3SbMJYuHjQ+iXOxs/66xiJHUeHXG7HRjJ3d\nn/8NlJBkxOVU06bjYwLSmbNfOdvGVCgkOFtmY2mBaKVzFZoRMztXcipqaGsptU0M\nKgKvEgNIIP9dF7xRhQwAIXI0ycect8S2/8VYmwU35h+OVpUeVJb7xtDdmkT+bV2E\nFMzFP6VfDIeEVGnL8MLnPQqpLV2zoYHNRUegolvc1MgbcoVRNH5EUFeUuSfFxTav\nhmtyQTbnAgMBAAECggEATeyF/e7yiRiBUF6V4ty6kXXL6YEHanwVhsyULEWXSv5N\n4HysRZ7TYENB5w6waAvO37AmrDRSXDmfRbEyRA+LgZLAaEh/2MN7maJAiROxgT/V\nbFDV3f8RmcMQHg7DL+gHMm+5ZYrXVLM9xH8xaPN/IrSZnQwpoJu/z1KKnl6usVmN\n+iS0tXaG7lmVfoyHsqiNh3iOtgdjVocbyTtq3rzK96M/gRQuXombUWFGvJYRyPKB\nsTH9dRabvWHOGkgGUNmlvdpkHnM6BXE4mIM1vzadONRWKYQyYB5pPOPkr9CNBnCy\n+rb1GOKCSsHLzWBLIo7+AaQ58kiiXXIr2binlwka4QKBgQDpjXGw3y6Ho/ySl4UP\nUpittD4ptPlmKQ4Us4N9BdfNlgW3wmAZtGoBOXSvvf0OvOrp6I59U8fA0KklF40F\nahFbPuW4F12eOQXhOrA7YCM8dSdL/8xUPyVOgwGWQXRIsLvVNBGSn9ckMiTOUiUC\nuUoKXiYFYD5eKUczEtSxHramhwKBgQDHX+S5izrg2EeNm1eWys0eo9YG6aa3vOOd\nULh3HdOA2wfOmggjVZSDPz7BTq2Nu4WVQL0lUwip2FY3jITQ0jOlOACTpQo2E4nL\nxS81FejB2uxZYDF7oIcmHHkKihPFR47MlcGHfzMRuXwqwdtqzAO9onsOHwdoX0rR\nlmOe5KykoQKBgQCYKWkq/R1JjhOeRk2QoBWNBmOBtMDQSGs+HX7LU6U38kgjYuZN\nmPd/eLmHTlay5W5/mt5K1OzNuKSa3+8m2eYY9q+f8skxrqEgDqaG6KnMV9+UakHr\nmYBq2HuOM3LZcRvPWi8gwjbfBDRqn6YxUhrlClXnJr87hdU3d0tPYl1JvQKBgQCe\najJJvzgMOa049go1dXRf+RvxKCvg6EQO1nmLo/ZO9zoPzdHTiYdUdac+X26FJE+y\n1Nq1UnGayptOzecmKS8CAypqJgOkDgg6EbY9vufPSEztgwIuUdGw1YTTe/zTjtUG\n96LrL4V7et8O9jOKewop3nVaNgtjwfun5o/HS7lloQKBgQC6EsvC6MVXwhPFqh/Z\nq0x3zo7Ajb7oUI8C8JnUGq9Zb6HOzL8eJuTTHH/gffWhgOtT0TlDt018quEwO9L+\nCqc7F69ANdsZWSkwhCplJvHg6wZbWPVO1U0ZCENYDkj34a8OKiSLTJFW1N5Q4EME\nQDSLO113K7/VmbIMaSGeT8uABg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-23ten@phlask-pyrebase.iam.gserviceaccount.com",
+  "client_id": "101970889163499475730",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-23ten%40phlask-pyrebase.iam.gserviceaccount.com"
+}
