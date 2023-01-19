@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+    <title>Phlask Tap List</title>
+    
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    
+	<script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+
+</head>
+
+<body>
+    <h2>Phlask Tap Dashboard</h2>
+    <a class="btn btn-primary" href="addtap">Add New Tap</a>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Access</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Description</th>
+            <th scope="col">Filteration</th>
+            <th scope="col">GP ID</th>
+            <th scope="col">Handicap</th>
+            <!-- <th scope="col">Hours</th> -->
+            <th scope="col">Lat</th>
+            <th scope="col">Lon</th>
+            <th scope="col">Norms</th>
+            <th scope="col">Organization</th>
+            <th scope="col">Permanently Closed</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Quality</th>
+            <th scope="col">Service</th>
+            <th scope="col">Statement</th>
+            <th scope="col">Status</th>
+            <th scope="col">Tap Type</th>
+            <th scope="col">Tap Number</th>
+            <th scope="col">Vessel</th>
+            <th scope="col">Zipcode</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for tap in taps %}
+                <tr>
+                    <td>{{ tap["access"] }}</th>
+                    <td>{{ tap["address"] }}</td>
+                    <td>{{ tap["city"] }}</td>
+                    <td>{{ tap["description"] }}</td>
+                    <td>{{ tap["filteration"] }}</td>
+                    <td>{{ tap["gp_id"] }}</td>
+                    <td>{{ tap["handicap"] }}</td>
+                    <!-- <td>{{ tap["hours"] }}</td> -->
+                    <td>{{ tap["lat"] }}</td>
+                    <td>{{ tap["lon"] }}</td>
+                    <td>{{ tap["norms"] }}</td>
+                    <td>{{ tap["organization"] }}</td>
+                    <td>{{ tap["permanently_closed"] }}</td>
+                    <td>{{ tap["phone"] }}</td>
+                    <td>{{ tap["quality"] }}</td>
+                    <td>{{ tap["service"] }}</td>
+                    <td>{{ tap["statement"] }}</td>
+                    <td>{{ tap["status"] }}</td>
+                    <td>{{ tap["tap_type"] }}</td>
+                    <td>{{ tap["tapnum"] }}</td>
+                    <td>{{ tap["vessel"] }}</td>
+                    <td>{{ tap["zip_code"] }}</td>
+                    <td><a class="btn btn-primary" href='updatetap/{{ tap["tapnum"] }}'>Edit</a></td>
+                    <td><a class="btn btn-primary" href='deletetap/{{ tap["tapnum"]  }}'>Delete</a></td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</body>
