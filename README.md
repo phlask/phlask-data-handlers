@@ -1,5 +1,5 @@
 # Phlask Data Handlers
-## Phlask Data Handlers is a toolset of Admin like data tools/scripts for the Phlask project
+## This project is a toolset of Admin like data tools/scripts for the Phlask project
 
 ### Features
 - Flask Firebase CRUD Dashboard: Allows developers to easily view, update, delete, and sort/filter for taps
