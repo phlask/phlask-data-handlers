@@ -1,15 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, send_from_directory, request, jsonify, current_app, g as app_ctx
-
-import firebase_admin
-from firebase_admin import credentials
-from admin_classes import prod_admin as prod, beta_admin as beta, test_admin as test
+from admin_classes import prod_admin as prod, beta_admin as beta, test_admin as test, json_data
 import time
 import os
 import json
 import boto3
 
-# os.environ['AWS_ACCESS_KEY_ID'] = 'YOUR_ACCESS_KEY'
-# os.environ['AWS_SECRET_ACCESS_KEY'] = 'YOUR_SECRET_KEY'
+os.environ['AWS_ACCESS_KEY_ID'] = 'PLACE_AWS_ID_HERE'
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'PLACE_AWS_KEY_HERE'
 s3 = boto3.client('s3')
 
 bucket = 'phlask-firebase-bucket'
@@ -38,8 +35,6 @@ forage_test=test().forage_db_live
 dashboard = Flask(__name__)
 
 def connectDB():
-    cred = credentials.Certificate(json_data)
-    firebase_admin.initialize_app(cred, {"databaseURL": "https://phlask-web-map-prod-water-live.firebaseio.com/" })
     return water_prod
 
 @dashboard.route("/")
@@ -303,4 +298,4 @@ def logging_after(response):
 
 if(__name__ == "__main__"):
     dbconn = connectDB()
-    dashboard.run(debug=False, host='0.0.0.0')
+    dashboard.run(debug=True)

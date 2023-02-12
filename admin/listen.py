@@ -6,11 +6,11 @@ import boto3
 import json
 
 # Set the AWS credentials as environment variables
-os.environ['AWS_ACCESS_KEY_ID'] = 'AKIA2K2LNBLNFDPA44V6'
-os.environ['AWS_SECRET_ACCESS_KEY'] = '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'
+os.environ['AWS_ACCESS_KEY_ID'] = 'PLACE_AWS_ID_HERE'
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'PLACE_AWS_KEY_HERE'
 
-# os.environ['AWS_ACCESS_KEY_ID'] = 'YOUR_ACCESS_KEY'
-# os.environ['AWS_SECRET_ACCESS_KEY'] = 'YOUR_SECRET_KEY'
+os.environ['AWS_ACCESS_KEY_ID'] = 'PLACE_AWS_ID_HERE'
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'PLACE_AWS_KEY_HERE'
 
 # Create a client using the boto3 library for the phlask-firebase-bucket
 s3 = boto3.client('s3')

@@ -1,2 +1,2 @@
-firebase_admin==5.3.0
-boto3 == 1.26.52
+firebase_admin==6.0.1
+boto3==1.26.69
