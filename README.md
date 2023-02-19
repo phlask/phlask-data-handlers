@@ -1,6 +1,33 @@
 # Phlask Data Handlers
 ## This project is a toolset of Admin like data tools/scripts for the Phlask project
 
+## Project Structure
+
+```
+.
+├── admin
+│   ├── admin_classes.py          <-- Custom Firebase's SDK Module Phlask use cases
+│   ├── test.py                   <-- Testing script for new functions added to module
+│   └── requirements.txt          <-- Required dependencies for usage 
+├── aws_lambda                    <-- Componenets used in AWS for lambda functions
+├── dashboard
+|   ├──templates                  <-- Flask template HTML files located here
+|   ├──docker-compose.yml
+|   ├──Dockerfile                 <-- Dockerfile defining container for local dev and deploy
+│   ├── admin_classes.py          <-- Custom Firebase's SDK Module Phlask use cases
+│   ├── app.py                    <-- Main Flask app located 
+│   ├── static                    <-- Static Assets for Webapp located here
+│   └── integration               <-- Source files for unit tests
+├── slackbot
+|   ├── bot.py                    <-- Slackbot database update script located here 
+│   └── requirements.txt          <-- Required dependencies for usage 
+├── cypress.json
+├── .env                          <-- Input Credentials/Paths for Slackbot & Firebase(not for dashboard usage)
+├── README.md
+└── cleanup.py                    <-- Script to clean up credentials and paths (call this before pushing commits)
+
+```
+
 ### Features
 - Flask Firebase CRUD Dashboard: Allows developers to easily view, update, delete, and sort/filter for taps
 
