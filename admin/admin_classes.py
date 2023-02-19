@@ -4,22 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import os
 import json
-import boto3
-
-# Set the AWS credentials as environment variables
-# Uncomment the following lines and replace the values with your own AWS credentials
-os.environ['AWS_ACCESS_KEY_ID'] = 'PLACE_AWS_ID_HERE'
-os.environ['AWS_SECRET_ACCESS_KEY'] = 'PLACE_AWS_KEY_HERE'
-
-# Create a client using the boto3 library for the phlask-firebase-bucket
-s3 = boto3.client('s3')
-
-
-bucket = 'phlask-firebase-bucket'
-object_key = 'phlask.json'
-response = s3.get_object(Bucket=bucket, Key=object_key)
-object_content = response['Body'].read().decode('utf-8')
-json_data = json.loads(object_content)
+json_data = json.loads(os.environ.get('FIREBASE_CREDENTIALS'))
 #----------------------------------------------------------------------------------------------------------------------
 # Prod database URL's
 pointer_url = 'https://phlask-pyrebase-default-rtdb.firebaseio.com/'

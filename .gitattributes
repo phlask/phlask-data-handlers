@@ -1,4 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 # remove pycache
-*.py[cod] __pycache__ *.so *.dylib
+*.py[cod] __pycache__ *.dylib

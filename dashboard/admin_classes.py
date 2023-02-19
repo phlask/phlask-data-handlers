@@ -6,14 +6,18 @@ import os
 import json
 import boto3
 
-os.environ['AWS_ACCESS_KEY_ID'] = 'PLACE_AWS_ID_HERE'
-os.environ['AWS_SECRET_ACCESS_KEY'] = 'PLACE_AWS_KEY_HERE'
-s3 = boto3.client('s3')
-bucket = 'phlask-firebase-bucket'
-object_key = 'phlask.json'
-response = s3.get_object(Bucket=bucket, Key=object_key)
-object_content = response['Body'].read().decode('utf-8')
-json_data = json.loads(object_content)
+# os.environ['AWS_ACCESS_KEY_ID'] = 'AKIA2K2LNBLNI573DWAL'
+# os.environ['AWS_SECRET_ACCESS_KEY'] = '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'
+# s3 = boto3.client('s3')
+# bucket = 'phlask-firebase-bucket'
+# object_key = 'phlask.json'
+# response = s3.get_object(Bucket=bucket, Key=object_key)
+# object_content = response['Body'].read().decode('utf-8')
+# json_data = json.loads(object_content)
+
+# connect to firebase credentials path in .env file
+json_data = os.getenv('FIREBASE_CREDENTIALS')
+
 
 #----------------------------------------------------------------------------------------------------------------------
 # Prod database URL's

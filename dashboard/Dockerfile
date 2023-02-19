@@ -1,21 +1,17 @@
-# Docker
-FROM python:3.10.9
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim-buster
 
-WORKDIR /dashboard
+# Set the working directory to /app
+WORKDIR /app
 
-# copy the dependencies from the requirements.txt file
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Install the required packages
-RUN pip install --no-cache-dir -r requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
+# Expose port 5000 for the Flask app to listen on
+EXPOSE 5000
 
-# Copy the Flask application code to the working directory
-COPY app.py .
-
-# Set environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
-
-# Run the Flask development server
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Run the Flask app
+CMD ["python", "app.py"]
