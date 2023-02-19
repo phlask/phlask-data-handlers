@@ -15,7 +15,6 @@ os.environ['AWS_SECRET_ACCESS_KEY'] = 'PLACE_AWS_KEY_HERE'
 # Create a client using the boto3 library for the phlask-firebase-bucket
 s3 = boto3.client('s3')
 
-
 bucket = 'phlask-firebase-bucket'
 object_key = 'phlask.json'
 response = s3.get_object(Bucket=bucket, Key=object_key)
