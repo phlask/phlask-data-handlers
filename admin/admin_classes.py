@@ -4,7 +4,14 @@ from firebase_admin import credentials
 from firebase_admin import db
 import os
 import json
-json_data = json.loads(os.environ.get('FIREBASE_CREDENTIALS'))
+from dotenv import load_dotenv
+from pathlib import Path
+
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+json_data = json.loads(os.getenv('FIREBASE_CREDENTIALS'))
+
 #----------------------------------------------------------------------------------------------------------------------
 # Prod database URL's
 pointer_url = 'https://phlask-pyrebase-default-rtdb.firebaseio.com/'

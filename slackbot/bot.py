@@ -6,6 +6,10 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+json_data = os.getenv('FIREBASE_CREDENTIALS')
 #----------------------------------------------------------------------------------------------------------------------
 # Prod database URL's
 pointer_url = 'https://phlask-pyrebase-default-rtdb.firebaseio.com/'
@@ -39,7 +43,7 @@ test_bathroom_url_live = "https://phlask-web-map-test-bathroom-live.firebaseio.c
 test_bathroom_url_verify = "https://phlask-web-map-test-bathroom-verify.firebaseio.com/"
 #----------------------------------------------------------------------------------------------------------------------
 #creds for initializing firebase admin
-cred = credentials.Certificate(r'C:\Users\Loaner\Desktop\cfp\phlask-admin\admin\phlask.json')
+cred = credentials.Certificate(json_data)
 # cred = credentials.Certificate('ENTER PATH TO FIREBASE CREDENTIALS HERE')
 firebase_admin.initialize_app(cred, { 'databaseURL': 'https://phlask-pyrebase-default-rtdb.firebaseio.com/' })
 #----------------------------------------------------------------------------------------------------------------------
@@ -102,8 +106,13 @@ client.chat_postMessage(channel="#testing-phlasks-slackbot", text="Hello world!"
 if response is not None:
     client.chat_postMessage(channel="#testing-phlasks-slackbot", text="A new Tap has been added to the database!")
 
-    
+
+def check_response(response):
 
 
+    if response is not None:
+        client.chat_postMessage(channel="#testing-phlasks-slackbot", text="A new Tap has been added to the database!")
+
+        
 
 
