@@ -21,7 +21,6 @@
 ├── slackbot
 |   ├── bot.py                    <-- Slackbot database update script located here 
 │   └── requirements.txt          <-- Required dependencies for usage 
-├── cypress.json
 ├── .env                          <-- Input Credentials/Paths for Slackbot & Firebase(not for dashboard usage)
 ├── README.md
 └── cleanup.py                    <-- Script to clean up credentials and paths (call this before pushing commits)
