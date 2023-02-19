@@ -13,17 +13,17 @@
 
 ### How to run dashboard web app
 1. Start up terminal and CD in to the dashboard directory
-2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
-3. Then run the following script
+2. Run the following commands while docker is running
 
 ```terminal
-flask run
+$ docker build -t dashboard .
 ```
-For auto-reload when developing use the following:
+Then run
 ```terminal
-flask --app app.py --debug run
+$ docker-compose up
 ```
-4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+3. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+**Warning Initial Run time is about ~50 seconds and the auto-reload is wonky in the sense that edits done in app.py will make the application reload but not edits made in the templates folder. So keep in mind you must alter something (Simply a space or delete a space) in the app.py file to see frontend changes for now while we are improving docker development 
 
 For faster development uncomment the top block and comment out the bottom in app.py
 #### app.py　
