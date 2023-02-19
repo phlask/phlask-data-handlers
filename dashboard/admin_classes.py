@@ -89,16 +89,16 @@ test_food_db_live = db.reference('/', app= test_food_live)
 test_forage_db_live = db.reference('/', app= test_forage_live)
 test_bathroom_db_live = db.reference('/', app= test_bathroom_live)
 #----------------------------------------------------------------------------------------------------------------------
-class prod_admin:
+class prodAdmin:
     def __init__(self):
         self.water_db_live = prod_water_db_live
         self.food_db_live = prod_food_db_live
         self.forage_db_live = prod_forage_db_live
         self.bathroom_db_live = prod_bathroom_db_live
-    def get_db(ref):
+    def getDb(ref):
         ref_db = ref.get()
         return ref_db
-    def set_db(ref):
+    def setDb(ref):
         ref_db = ref.set()
         return ref_db
     def getChangedData(ref,url):
@@ -106,21 +106,21 @@ class prod_admin:
         changed_dict_list = changed[1]
         return changed_dict_list
 
-    def db_dry_count(ref, url):
+    def dbDryCount(ref, url):
         changed=prod_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
                 count += 1
         print(count)
-    def db_comparison(ref, alt_ref):
+    def dbComparison(ref, alt_ref):
         ref_data = prod_admin.get_db(ref)
         alt_ref_data = prod_admin.get_db(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
-    def update_changed_db_iter(ref, url, iterate: str):
+    def updateChangedDbIter(ref, url, iterate: str):
         changed=prod_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
@@ -128,21 +128,21 @@ class prod_admin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-    def update_changed_db(ref, url):
+    def updateChangedDb(ref, url):
         changed=prod_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
             count += 1
             print(count)
-    def update_db(ref, alt_ref):
+    def updateDb(ref, alt_ref):
         alt_ref_data= prod_admin.get_db(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
-    def update_db_iter(ref, alt_ref, iterate: str):
+    def updateDbIter(ref, alt_ref, iterate: str):
         alt_ref_data= prod_admin.get_db(alt_ref)
         count = 0
         for dict in alt_ref_data:
@@ -150,18 +150,18 @@ class prod_admin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-    def delete_node(ref):
+    def deleteNode(ref):
         for node in ref.get():
             ref.child(node).delete()
-    def add_to_db(ref, data):
+    def addToDb(ref, data):
         ref.push(data)
-    def get_count(ref):
+    def getCount(ref):
         count = 0
         for dict in prod_admin.get_db(ref):
             count += 1
         return count
 
-    def get_tap(ref, tapnum):
+    def getTap(ref, tapnum):
         taps = prod_admin.get_db(ref)
         try:
             for tap in taps:
@@ -172,13 +172,13 @@ class prod_admin:
                    pass
         except:
             pass
-    def delete_tap(ref, tapnum):
+    def deleteTap(ref, tapnum):
         try:
             ref.child(str(tapnum)).delete()
                     
         except:
             print("No tap found")
-    def update_tap(ref, tapnum, data):
+    def updateTap(ref, tapnum, data):
         try:
             ref.child(str(tapnum)).update(data)
         except:
@@ -186,13 +186,13 @@ class prod_admin:
             
 
 
-class beta_admin:
+class betaAdmin:
     def __init__(self):
         self.water_db_live = beta_water_db_live
         self.food_db_live = beta_food_db_live
         self.forage_db_live = beta_forage_db_live
         self.bathroom_db_live = beta_bathroom_db_live
-    def get_db(ref):
+    def getDb(ref):
         ref_db = ref.get()
         return ref_db
     def getChangedData(ref,url):
@@ -200,21 +200,21 @@ class beta_admin:
         changed_dict_list = changed[1]
         return changed_dict_list
 
-    def db_dry_count(ref, url):
+    def dbDryCount(ref, url):
         changed=beta_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
                 count += 1
         print(count)
-    def db_comparison(ref, alt_ref):
+    def dbComparison(ref, alt_ref):
         ref_data = beta_admin.get_db(ref)
         alt_ref_data = beta_admin.get_db(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
-    def update_changed_db_iter(ref, url, iterate: str):
+    def updateChangedDbIter(ref, url, iterate: str):
         changed=beta_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
@@ -222,21 +222,21 @@ class beta_admin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-    def update_changed_db(ref, url):
+    def updateChangedDb(ref, url):
         changed=beta_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
             count += 1
             print(count)
-    def update_db(ref, alt_ref):
+    def updateDb(ref, alt_ref):
         alt_ref_data= beta_admin.get_db(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
-    def update_db_iter(ref, alt_ref, iterate: str):
+    def updateDbIter(ref, alt_ref, iterate: str):
         alt_ref_data= beta_admin.get_db(alt_ref)
         count = 0
         for dict in alt_ref_data:
@@ -244,10 +244,10 @@ class beta_admin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-    def delete_node(ref):
+    def deleteNode(ref):
         for node in ref.get():
             ref.child(node).delete()
-    def delete_tap(ref, tapnum):
+    def deleteTap(ref, tapnum):
         taps = beta_admin.get_db(ref)
         for tap in taps:
             try:
@@ -255,15 +255,15 @@ class beta_admin:
                     ref.child(tap).delete()
             except:
                 continue
-    def add_to_db(ref, data):
+    def addToDb(ref, data):
         ref.push(data)
-    def get_count(ref):
+    def getCount(ref):
         count = 0
         for dict in beta_admin.get_db(ref):
             count += 1
         return count
 
-    def get_tap(ref, tapnum):
+    def getTap(ref, tapnum):
         taps = beta_admin.get_db(ref)
         try:
             for tap in taps:
@@ -274,13 +274,13 @@ class beta_admin:
                    pass
         except:
             pass
-    def delete_tap(ref, tapnum):
+    def deleteTap(ref, tapnum):
         try:
             ref.child(str(tapnum)).delete()
                     
         except:
             print("No tap found")
-    def update_tap(ref, tapnum, data):
+    def updateTap(ref, tapnum, data):
         try:
             ref.child(str(tapnum)).update(data)
         except:
@@ -289,13 +289,13 @@ class beta_admin:
     
     
 
-class test_admin:
+class testAdmin:
     def __init__(self):
         self.water_db_live = test_water_db_live
         self.food_db_live = test_food_db_live
         self.forage_db_live = test_forage_db_live
         self.bathroom_db_live = test_bathroom_db_live
-    def get_db(self, ref):
+    def getDb(self, ref):
         ref_db = ref.get()
         return ref_db
     def getChangedData(ref,url):
@@ -303,21 +303,21 @@ class test_admin:
         changed_dict_list = changed[1]
         return changed_dict_list
 
-    def db_dry_count(ref, url):
+    def dbDryCount(ref, url):
         changed=test_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
                 count += 1
         print(count)
-    def db_comparison(ref, alt_ref):
+    def dbComparison(ref, alt_ref):
         ref_data = test_admin.get_db(ref)
         alt_ref_data = test_admin.get_db(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
-    def update_changed_db_iter(ref, url, iterate: str):
+    def updateChangedDbIter(ref, url, iterate: str):
         changed=test_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
@@ -325,21 +325,21 @@ class test_admin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-    def update_changed_db(ref, url):
+    def updateChangedDb(ref, url):
         changed=test_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
             count += 1
             print(count)
-    def update_db(ref, alt_ref):
+    def updateDb(ref, alt_ref):
         alt_ref_data= test_admin.get_db(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
-    def update_db_iter(ref, alt_ref, iterate: str):
+    def updateDbIter(ref, alt_ref, iterate: str):
         alt_ref_data= test_admin.get_db(alt_ref)
         count = 0
         for dict in alt_ref_data:
@@ -347,19 +347,19 @@ class test_admin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-    def delete_node(ref):
+    def deleteNode(ref):
         for node in ref.get():
             ref.child(node).delete()
-    def add_to_db(ref, data):
+    def addToDb(ref, data):
         ref.push(data)
 
-    def get_count(ref):
+    def getCount(ref):
         count = 0
         for dict in test_admin.get_db(ref):
             count += 1
         return count
 
-    def get_tap(ref, tapnum):
+    def getTap(ref, tapnum):
         taps = test_admin.get_db(ref)
         try:
             for tap in taps:
@@ -370,13 +370,13 @@ class test_admin:
                    pass
         except:
             pass
-    def delete_tap(ref, tapnum):
+    def deleteTap(ref, tapnum):
         try:
             ref.child(str(tapnum)).delete()
                     
         except:
             print("No tap found")
-    def update_tap(ref, tapnum, data):
+    def updateTap(ref, tapnum, data):
         try:
             ref.child(str(tapnum)).update(data)
         except:
