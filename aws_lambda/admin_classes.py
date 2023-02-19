@@ -92,13 +92,13 @@ class prod_admin:
     def get_db(ref):
         ref_db = ref.get()
         return ref_db
-    def get_changed_data(ref,url):
+    def getChangedData(ref,url):
         changed = ref.get_if_changed(url)
         changed_dict_list = changed[1]
         return changed_dict_list
 
     def db_dry_count(ref, url):
-        changed=prod_admin.get_changed_data(ref,url)
+        changed=prod_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
@@ -112,7 +112,7 @@ class prod_admin:
         else:
             print("The databases are not the same")
     def update_changed_db_iter(ref, url, iterate: str):
-        changed=prod_admin.get_changed_data(ref,url)
+        changed=prod_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -120,7 +120,7 @@ class prod_admin:
                 count += 1
                 print(count)
     def update_changed_db(ref, url):
-        changed=prod_admin.get_changed_data(ref,url)
+        changed=prod_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
@@ -157,13 +157,13 @@ class beta_admin:
     def get_db(ref):
         ref_db = ref.get()
         return ref_db
-    def get_changed_data(ref,url):
+    def getChangedData(ref,url):
         changed = ref.get_if_changed(url)
         changed_dict_list = changed[1]
         return changed_dict_list
 
     def db_dry_count(ref, url):
-        changed=beta_admin.get_changed_data(ref,url)
+        changed=beta_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
@@ -177,7 +177,7 @@ class beta_admin:
         else:
             print("The databases are not the same")
     def update_changed_db_iter(ref, url, iterate: str):
-        changed=beta_admin.get_changed_data(ref,url)
+        changed=beta_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -185,7 +185,7 @@ class beta_admin:
                 count += 1
                 print(count)
     def update_changed_db(ref, url):
-        changed=beta_admin.get_changed_data(ref,url)
+        changed=beta_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
@@ -222,13 +222,13 @@ class test_admin:
     def get_db(self, ref):
         ref_db = ref.get()
         return ref_db
-    def get_changed_data(ref,url):
+    def getChangedData(ref,url):
         changed = ref.get_if_changed(url)
         changed_dict_list = changed[1]
         return changed_dict_list
 
     def db_dry_count(ref, url):
-        changed=test_admin.get_changed_data(ref,url)
+        changed=test_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
@@ -242,7 +242,7 @@ class test_admin:
         else:
             print("The databases are not the same")
     def update_changed_db_iter(ref, url, iterate: str):
-        changed=test_admin.get_changed_data(ref,url)
+        changed=test_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -250,7 +250,7 @@ class test_admin:
                 count += 1
                 print(count)
     def update_changed_db(ref, url):
-        changed=test_admin.get_changed_data(ref,url)
+        changed=test_admin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
