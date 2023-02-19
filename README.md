@@ -15,7 +15,7 @@
 |   ├──docker-compose.yml
 |   ├──Dockerfile                 <-- Dockerfile defining container for local dev and deploy
 │   ├── admin_classes.py          <-- Custom Firebase's SDK Module Phlask use cases
-│   ├── app.py                    <-- Main Flask app located 
+│   ├── app.py                    <-- Main Flask app located here
 │   ├── static                    <-- Static Assets for Webapp located here
 │   └── integration               <-- Source files for unit tests
 ├── slackbot
