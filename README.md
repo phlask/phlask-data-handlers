@@ -85,6 +85,6 @@ def main():
         pass
     # return render_template("test.html")
 ```
-*As this project is still in devlopment there are still loading speed issues that are still being taken care of
+
 ### Home Screen
 ![](https://github.com/ojimba01/phlask-admin/blob/main/readme/dashboard_index.gif)
