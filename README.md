@@ -47,7 +47,7 @@ $ docker build -t dashboard .
 ```
 Then run
 ```terminal
-$ docker-compose up
+$ docker compose up
 ```
 3. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
 **Warning Initial Run time is about ~50 seconds and the auto-reload is wonky in the sense that edits done in app.py will make the application reload but not edits made in the templates folder. So keep in mind you must alter something (Simply a space or delete a space) in the app.py file to see frontend changes for now while we are improving docker development 
