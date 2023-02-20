@@ -68,10 +68,6 @@ $ docker compose up
 ```terminal
 flask run
 ```
-For auto-reload when developing use the following:
-```terminal
-flask --app app.py --debug run
-```
 4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
 
 Example For faster development:
