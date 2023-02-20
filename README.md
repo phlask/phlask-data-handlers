@@ -59,10 +59,7 @@ $ docker compose up
 <br/>
 
 **Auto-reload is also wonky ccurrentley with how docker is set up. Edits done in app.py will make the application reload but not edits made in the templates folder. So keep in mind, you must alter something (Simply a space or delete a space) in the app.py file to see frontend changes. We will be working on improving this very soon!
-
 <br/>
-<br/>
-
 ### Flask (alternative)
 
 <br/>
