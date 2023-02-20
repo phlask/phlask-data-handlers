@@ -61,8 +61,6 @@ $ docker compose up
 **Auto-reload is also wonky ccurrentley with how docker is set up. Edits done in app.py will make the application reload but not edits made in the templates folder. So keep in mind, you must alter something (Simply a space or delete a space) in the app.py file to see frontend changes. We will be working on improving this very soon!
 <br/>
 ### Flask (alternative)
-
-<br/>
 1. Start up terminal and CD in to the dashboard directory
 2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
 3. Then run the following script
