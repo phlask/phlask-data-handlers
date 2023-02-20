@@ -41,7 +41,7 @@
 ### Docker (Recommended path for consistency across computers)
 
 1. Start up terminal and CD in to the dashboard directory
-2. Run the following commands while docker is running
+2. Run the following commands while docker is running (do not include "$" while running the commands below)
 
 ```terminal
 $ docker build -t dashboard .
@@ -66,7 +66,7 @@ $ docker compose up
 3. Then run the following script
 
 ```terminal
-flask run
+$ flask run
 ```
 4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
 
