@@ -46,11 +46,11 @@
 ```terminal
 $ docker build -t dashboard .
 ```
-Then run
+3. Then run
 ```terminal
 $ docker compose up
 ```
-3. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
 
 <br/>
 
@@ -73,11 +73,7 @@ $ docker compose up
 ```terminal
 flask run
 ```
-For auto-reload when developing use the following:
-```terminal
-flask --app app.py --debug run
-```
-4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard (auto-reload should automatically be enabled)
 
 Example For faster development:
 
