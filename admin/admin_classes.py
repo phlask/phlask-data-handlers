@@ -103,7 +103,7 @@ class prodAdmin:
         return changed_dict_list
 
     def dbDryCount(ref, url):
-        changed=prod_admin.getChangedData(ref,url)
+        changed=prodAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
@@ -111,15 +111,15 @@ class prodAdmin:
         print(count)
 
     def dbComparison(ref, alt_ref):
-        ref_data = prod_admin.get_db(ref)
-        alt_ref_data = prod_admin.get_db(alt_ref)
+        ref_data = prodAdmin.getDb(ref)
+        alt_ref_data = prodAdmin.getDb(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
 
     def updateChangedDbIter(ref, url, iterate: str):
-        changed=prod_admin.getChangedData(ref,url)
+        changed=prodAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -128,7 +128,7 @@ class prodAdmin:
                 print(count)
 
     def updateChangedDb(ref, url):
-        changed=prod_admin.getChangedData(ref,url)
+        changed=prodAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
@@ -136,7 +136,7 @@ class prodAdmin:
             print(count)
 
     def updateDb(ref, alt_ref):
-        alt_ref_data= prod_admin.get_db(alt_ref)
+        alt_ref_data= prodAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
@@ -144,7 +144,7 @@ class prodAdmin:
             print(count)
 
     def updateDbIter(ref, alt_ref, iterate: str):
-        alt_ref_data= prod_admin.get_db(alt_ref)
+        alt_ref_data= prodAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             if dict[iterate] == count:
@@ -161,12 +161,12 @@ class prodAdmin:
     
     def getCount(ref):
         count = 0
-        for dict in prod_admin.get_db(ref):
+        for dict in prodAdmin.getDb(ref):
             count += 1
         return count
 
     def getTap(ref, tapnum):
-        taps = prod_admin.get_db(ref)
+        taps = prodAdmin.getDb(ref)
         try:
             for tap in taps:
                 try:
@@ -214,7 +214,7 @@ class betaAdmin:
         return changed_dict_list
 
     def dbDryCount(ref, url):
-        changed=beta_admin.getChangedData(ref,url)
+        changed=betaAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
@@ -222,15 +222,15 @@ class betaAdmin:
         print(count)
 
     def dbComparison(ref, alt_ref):
-        ref_data = beta_admin.get_db(ref)
-        alt_ref_data = beta_admin.get_db(alt_ref)
+        ref_data = betaAdmin.getDb(ref)
+        alt_ref_data = betaAdmin.getDb(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
 
     def updateChangedDbIter(ref, url, iterate: str):
-        changed=beta_admin.getChangedData(ref,url)
+        changed=betaAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -239,7 +239,7 @@ class betaAdmin:
                 print(count)
 
     def updateChangedDb(ref, url):
-        changed=beta_admin.getChangedData(ref,url)
+        changed=betaAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
@@ -247,7 +247,7 @@ class betaAdmin:
             print(count)
 
     def updateDb(ref, alt_ref):
-        alt_ref_data= beta_admin.get_db(alt_ref)
+        alt_ref_data= betaAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
@@ -255,7 +255,7 @@ class betaAdmin:
             print(count)
 
     def updateDbIter(ref, alt_ref, iterate: str):
-        alt_ref_data= beta_admin.get_db(alt_ref)
+        alt_ref_data= betaAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             if dict[iterate] == count:
@@ -272,12 +272,12 @@ class betaAdmin:
 
     def getCount(ref):
         count = 0
-        for dict in beta_admin.get_db(ref):
+        for dict in betaAdmin.getDb(ref):
             count += 1
         return count
 
     def getTap(ref, tapnum):
-        taps = beta_admin.get_db(ref)
+        taps = betaAdmin.getDb(ref)
         try:
             for tap in taps:
                 try:
@@ -326,7 +326,7 @@ class testAdmin:
         return changed_dict_list
 
     def dbDryCount(ref, url):
-        changed=test_admin.getChangedData(ref,url)
+        changed=testAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
@@ -334,15 +334,15 @@ class testAdmin:
         print(count)
 
     def dbComparison(ref, alt_ref):
-        ref_data = test_admin.get_db(ref)
-        alt_ref_data = test_admin.get_db(alt_ref)
+        ref_data = testAdmin.getDb(ref)
+        alt_ref_data = testAdmin.getDb(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
 
     def updateChangedDbIter(ref, url, iterate: str):
-        changed=test_admin.getChangedData(ref,url)
+        changed=testAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -351,7 +351,7 @@ class testAdmin:
                 print(count)
 
     def updateChangedDb(ref, url):
-        changed=test_admin.getChangedData(ref,url)
+        changed=testAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
@@ -359,7 +359,7 @@ class testAdmin:
             print(count)
 
     def updateDb(ref, alt_ref):
-        alt_ref_data= test_admin.get_db(alt_ref)
+        alt_ref_data= testAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
@@ -367,7 +367,7 @@ class testAdmin:
             print(count)
 
     def updateDbIter(ref, alt_ref, iterate: str):
-        alt_ref_data= test_admin.get_db(alt_ref)
+        alt_ref_data= testAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             if dict[iterate] == count:
@@ -384,12 +384,12 @@ class testAdmin:
 
     def getCount(ref):
         count = 0
-        for dict in test_admin.get_db(ref):
+        for dict in testAdmin.getDb(ref):
             count += 1
         return count
 
     def getTap(ref, tapnum):
-        taps = test_admin.get_db(ref)
+        taps = testAdmin.getDb(ref)
         try:
             for tap in taps:
                 try:

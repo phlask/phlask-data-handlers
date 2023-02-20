@@ -1,8 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, send_from_directory, request, jsonify, current_app, g as app_ctx
-from admin_classes import prod_admin as prod, beta_admin as beta, test_admin as test
+from admin_classes import prodAdmin as prod, betaAdmin as beta, testAdmin as test
 import os
 import time
-
+import random as rand
 
 
 # initialize the prod_admin class
@@ -30,10 +30,10 @@ def connectDB():
 def main():
     try:
         #Static 4 taps for testing
-        water_prod_1=prod.get_tap(water_prod, 1)
-        water_prod_2=prod.get_tap(water_prod, 2)
-        water_prod_3=prod.get_tap(water_prod, 3)
-        water_prod_4=prod.get_tap(water_prod, 4)
+        water_prod_1=prod.getTap(water_prod, 1)
+        water_prod_2=prod.getTap(water_prod, 2)
+        water_prod_3=prod.getTap(water_prod, 3)
+        water_prod_4=prod.getTap(water_prod, 4)
         taps = [water_prod_1, water_prod_2, water_prod_3, water_prod_4]
 #------------------------------------------------------------------------------------------------#
          # All taps for development
@@ -112,7 +112,7 @@ def updatetap(tapnum):
     db=prod.get_db(water_prod) 
     if request.method == 'GET':
         try:
-            tp = prod.get_tap(water_prod, tapnum)
+            tp = prod.getTap(water_prod, tapnum)
             return render_template("addtap.html", tap = tp)
         except:
             pass
@@ -177,14 +177,14 @@ def updatetap(tapnum):
 
 @dashboard.route('/deletetap/<int:tapnum>')
 def deletetap(tapnum):
-    prod.delete_tap(water_prod, str(tapnum))
+    prod.deleteTap(water_prod, str(tapnum))
     return redirect('/') 
 
 @dashboard.route('/viewtap/<int:tapnum>', methods = ['GET','POST'])
 def viewtap(tapnum):
     if request.method == 'GET':
         try:
-            tp = prod.get_tap(water_prod, tapnum)
+            tp = prod.getTap(water_prod, tapnum)
             return render_template("viewtap.html", tap = tp)
         except:
             pass

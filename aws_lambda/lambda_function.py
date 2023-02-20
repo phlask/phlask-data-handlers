@@ -1,8 +1,8 @@
-from update_script import full_test, full_update
+from update_script import fullTest, fullUpdate
 import json
 def lambdaHandler(event, context):
     
-    full_test()
+    fullTest()
     # full_update()
     return {
         'statusCode': 200,

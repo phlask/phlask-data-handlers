@@ -21,7 +21,7 @@ food_db=food.food_db_live
 
 # print(prod.get_tap(water_db, 1))
 
-# create a function to check how long it takes to run a function
+# a function to check how long it takes to run a function
 def time_it(func):
     def wrapper(*args, **kwargs):
         import time

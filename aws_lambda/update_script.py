@@ -52,8 +52,8 @@ def updateTest():
     prod.update_db(forage_db_test,forage_db_prod)
 
 def fullUpdate():
-    update_beta()
-    update_test()
+    updateBeta()
+    updateTest()
 
 def fullTest():
     print(prod.get_db(water_db_prod))

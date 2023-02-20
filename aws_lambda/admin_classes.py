@@ -98,21 +98,21 @@ class prodAdmin:
         return changed_dict_list
 
     def dbDryCount(ref, url):
-        changed=prod_admin.getChangedData(ref,url)
+        changed=prodAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
                 count += 1
         print(count)
     def dbComparison(ref, alt_ref):
-        ref_data = prod_admin.get_db(ref)
-        alt_ref_data = prod_admin.get_db(alt_ref)
+        ref_data = prodAdmin.getDb(ref)
+        alt_ref_data = prodAdmin.getDb(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
     def updateChangedDbIter(ref, url, iterate: str):
-        changed=prod_admin.getChangedData(ref,url)
+        changed=prodAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -120,21 +120,21 @@ class prodAdmin:
                 count += 1
                 print(count)
     def updateChangedDb(ref, url):
-        changed=prod_admin.getChangedData(ref,url)
+        changed=prodAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
             count += 1
             print(count)
     def updateDb(ref, alt_ref):
-        alt_ref_data= prod_admin.get_db(alt_ref)
+        alt_ref_data= prodAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
     def updateDbIter(ref, alt_ref, iterate: str):
-        alt_ref_data= prod_admin.get_db(alt_ref)
+        alt_ref_data= prodAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             if dict[iterate] == count:
@@ -163,21 +163,21 @@ class betaAdmin:
         return changed_dict_list
 
     def dbDryCount(ref, url):
-        changed=beta_admin.getChangedData(ref,url)
+        changed=betaAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
                 count += 1
         print(count)
     def dbComparison(ref, alt_ref):
-        ref_data = beta_admin.get_db(ref)
-        alt_ref_data = beta_admin.get_db(alt_ref)
+        ref_data = betaAdmin.getDb(ref)
+        alt_ref_data = betaAdmin.getDb(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
     def updateChangedDbIter(ref, url, iterate: str):
-        changed=beta_admin.getChangedData(ref,url)
+        changed=betaAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -185,21 +185,21 @@ class betaAdmin:
                 count += 1
                 print(count)
     def updateChangedDb(ref, url):
-        changed=beta_admin.getChangedData(ref,url)
+        changed=betaAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
             count += 1
             print(count)
     def updateDb(ref, alt_ref):
-        alt_ref_data= beta_admin.get_db(alt_ref)
+        alt_ref_data= betaAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
     def updateDbIter(ref, alt_ref, iterate: str):
-        alt_ref_data= beta_admin.get_db(alt_ref)
+        alt_ref_data= betaAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             if dict[iterate] == count:
@@ -213,7 +213,7 @@ class betaAdmin:
         ref.push(data)
     
 
-class test_admin:
+class testAdmin:
     def __init__(self):
         self.water_db_live = test_water_db_live
         self.food_db_live = test_food_db_live
@@ -228,21 +228,21 @@ class test_admin:
         return changed_dict_list
 
     def dbDryCount(ref, url):
-        changed=test_admin.getChangedData(ref,url)
+        changed=testAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict:
                 count += 1
         print(count)
     def dbComparison(ref, alt_ref):
-        ref_data = test_admin.get_db(ref)
-        alt_ref_data = test_admin.get_db(alt_ref)
+        ref_data = testAdmin.getDb(ref)
+        alt_ref_data = testAdmin.getDb(alt_ref)
         if ref_data == alt_ref_data:
             print("The databases are the same")
         else:
             print("The databases are not the same")
     def updateChangedDbIter(ref, url, iterate: str):
-        changed=test_admin.getChangedData(ref,url)
+        changed=testAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             if dict[iterate] == count:
@@ -250,21 +250,21 @@ class test_admin:
                 count += 1
                 print(count)
     def updateChangedDb(ref, url):
-        changed=test_admin.getChangedData(ref,url)
+        changed=testAdmin.getChangedData(ref,url)
         count = 0
         for dict in changed:
             ref.update({count: dict})
             count += 1
             print(count)
     def updateDb(ref, alt_ref):
-        alt_ref_data= test_admin.get_db(alt_ref)
+        alt_ref_data= testAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
     def updateDbIter(ref, alt_ref, iterate: str):
-        alt_ref_data= test_admin.get_db(alt_ref)
+        alt_ref_data= testAdmin.getDb(alt_ref)
         count = 0
         for dict in alt_ref_data:
             if dict[iterate] == count:
