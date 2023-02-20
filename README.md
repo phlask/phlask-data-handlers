@@ -63,7 +63,7 @@ $ docker compose up
 <br/>
 <br/>
 
-# Flask (alternative)
+### Flask (alternative)
 
 <br/>
 1. Start up terminal and CD in to the dashboard directory
