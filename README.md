@@ -36,8 +36,11 @@
 
 - Firebase Slackbot: *Still in early development
 
+#Running locally
 
-### How to run dashboard web app
+### Docker (Recommended path for consistency across computers)
+
+How to run dashboard web app
 1. Start up terminal and CD in to the dashboard directory
 2. Run the following commands while docker is running
 
@@ -55,6 +58,22 @@ $ docker compose up
 **Auto-reload is also wonky ccurrentley with how docker is set up. Edits done in app.py will make the application reload but not edits made in the templates folder. So keep in mind, you must alter something (Simply a space or delete a space) in the app.py file to see frontend changes. We will be working on improving this very soon! 
 <br/>
 <br/>
+
+#Flask (alternative)
+How to run dashboard web app
+1. Start up terminal and CD in to the dashboard directory
+2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
+3. Then run the following script
+
+```terminal
+flask run
+```
+For auto-reload when developing use the following:
+```terminal
+flask --app app.py --debug run
+```
+4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+
 Example For faster development:
 
 Uncomment the top block and comment out the bottom in app.py (excluding the return statemens and the code below)
