@@ -64,7 +64,7 @@ $ docker compose up
 
 <br/>
 1. Start up terminal and CD in to the dashboard directory
-2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
+2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3) 
 3. Then run the following script
 ```terminal
 flask run
