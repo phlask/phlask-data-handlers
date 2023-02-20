@@ -64,12 +64,17 @@ $ docker compose up
 
 <br/>
 1. Start up terminal and CD in to the dashboard directory
-2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3) 
+2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
 3. Then run the following script
+
 ```terminal
-$ flask run
+flask run
 ```
-4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard (auto-reload should automatically be enabled)
+For auto-reload when developing use the following:
+```terminal
+flask --app app.py --debug run
+```
+4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
 
 Example For faster development:
 
