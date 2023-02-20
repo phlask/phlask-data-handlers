@@ -17,7 +17,7 @@
 │   ├── admin_classes.py          <-- Custom Firebase's SDK Module Phlask use cases
 │   ├── app.py                    <-- Main Flask app located here
 │   ├── static                    <-- Static Assets for Webapp located here
-│   └── integration               <-- Source files for unit tests
+│   └── requirements.txt          <-- Required dependencies for usage 
 ├── slackbot
 |   ├── bot.py                    <-- Slackbot database update script located here 
 │   └── requirements.txt          <-- Required dependencies for usage 
