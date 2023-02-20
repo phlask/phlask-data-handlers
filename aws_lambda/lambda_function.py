@@ -1,6 +1,6 @@
 from update_script import full_test, full_update
 import json
-def lambda_handler(event, context):
+def lambdaHandler(event, context):
     
     full_test()
     # full_update()
