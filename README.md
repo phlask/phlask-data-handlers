@@ -18,7 +18,7 @@
 │   ├── app.py                    <-- Main Flask app located here
 │   ├── static                    <-- Static Assets for Webapp located here
 │   └── requirements.txt          <-- Required dependencies for usage 
-├── slackbot
+├── slack
 |   ├── bot.py                    <-- Slackbot database update script located here 
 │   └── requirements.txt          <-- Required dependencies for usage 
 ├── .env                          <-- Input Credentials/Paths for Slackbot & Firebase(not for dashboard usage)
