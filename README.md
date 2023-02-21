@@ -36,7 +36,7 @@
 
 - Firebase Slackbot: *Still in early development
 
-# How to Run Dashboard Locally
+## How to Run Dashboard Locally
 
 ### Docker (Recommended path for consistency across computers)
 
