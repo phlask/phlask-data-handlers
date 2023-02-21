@@ -4,7 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import os
 
-json_data = os.getenv('FIREBASE_CREDENTIALS')
+json_data = None
 
 #----------------------------------------------------------------------------------------------------------------------
 # Prod database URL's
@@ -39,6 +39,15 @@ test_bathroom_url_live = "https://phlask-web-map-test-bathroom-live.firebaseio.c
 test_bathroom_url_verify = "https://phlask-web-map-test-bathroom-verify.firebaseio.com/"
 #----------------------------------------------------------------------------------------------------------------------
 #creds for initializing firebase admin
+try :
+    import json
+    with open('phlask.json') as f:
+        json_data = json.load(f)
+
+# if there is no json file, then this will use the environment variable
+
+except FileNotFoundError:
+    json_data = os.getenv('FIREBASE_CREDENTIALS')
 
 cred = credentials.Certificate(json_data)
 firebase_admin.initialize_app(cred, { 'databaseURL': 'https://phlask-pyrebase-default-rtdb.firebaseio.com/' })
