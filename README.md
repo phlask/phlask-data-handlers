@@ -70,34 +70,5 @@ $ flask run
 ```
 4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
 
-Example For faster development:
-
-keep the top block uncommented and comment out the bottom block in app.py (excluding the return statement)
-#### app.py　
-
-```python
-dashboard.route("/")
-def main():
-    try:
-        #Static 4 taps for testing
-        water_prod_1=prod.getTap(water_prod, 1)
-        water_prod_2=prod.getTap(water_prod, 2)
-        water_prod_3=prod.getTap(water_prod, 3)
-        water_prod_4=prod.getTap(water_prod, 4)
-        taps = [water_prod_1, water_prod_2, water_prod_3, water_prod_4]
-#------------------------------------------------------------------------------------------------#
-         # All taps for development
-    #     taps=[]
-    #     db_count = prod.get_count(water_prod)
-    #     for i in range(0, db_count):
-    #         taps_i = prod.get_tap(water_prod, i)
-    #         taps.append(taps_i)
-
-        return render_template("index.html", taps=taps)
-    except:
-        pass
-
-```
-
 ### Home Screen
 ![](https://github.com/ojimba01/phlask-admin/blob/main/readme/dashboard_index.gif)
