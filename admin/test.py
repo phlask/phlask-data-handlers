@@ -1,5 +1,5 @@
 # Import all the modules
-from admin_classes import prod_admin as prod
+from admin_classes import prodAdmin as prod
 from admin_classes import pointer_init
 # from admin_classes import beta_admin as beta
 # from admin_classes import test_admin as test
@@ -39,14 +39,60 @@ def time_check():
     taps=[]
     # db_count = prod.get_count(water_db)
     for i in range(0, 274):
-        taps_i = prod.get_tap(water_db, i)
+        taps_i = prod.getTap(water_db, i)
         taps.append(taps_i)
     return taps[1]
 
 # print(time_check())
+
+@time_it
+def time_check2():
+    # we will jsonify the data and send it to the front end
+    result = {}
+    # get the data from the database
+    data = prod.getDb(water_db) # this returrns a list of dictionaries
+    # convert the data to json
+    for d in data:
+        result.update(d)
+
+    for key in result.keys():
+        print(key)
+    # print (result, type(result))
+@time_it
+def time_check3():
+    result = {}
+    data = prod.getDb(water_db)
+    
+    for d in data:
+        try:
+            tapnum = d["tapnum"]
+            # print(tapnum)
+            if tapnum not in result:
+                result[tapnum] = {}
+            result[tapnum]=d
+        except:
+            pass
+    # print(result)
+
+    for value in result.values():
+        print(value["tapnum"])
+
+
+
+# @time_it
+# def test():
+#     return prod.getTap(water_db, 1)
+
+
+time_check3()
 # print("----------------------------------------------")
 
+# create a function that gets a snapshot of the database and returns all of the keys in a list
+# def snapshot(db):
+#     snapshot = db.get()
+#     keys = []
+#     for key in snapshot:
+#         keys.append(key)
+#     return keys
 
-
-print(prod.get_tap(water_db, 1))
-
+# print(snapshot(water_db))

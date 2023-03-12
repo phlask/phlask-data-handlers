@@ -7,8 +7,8 @@ import json
 from dotenv import load_dotenv
 from pathlib import Path
 
-env_path = Path('.') / '.env'
-load_dotenv(dotenv_path=env_path)
+# env_path = Path('.') / '.env'
+# load_dotenv(dotenv_path=env_path)
 
 json_data = json.loads(os.getenv('FIREBASE_CREDENTIALS'))
 
@@ -410,6 +410,9 @@ class testAdmin:
             ref.child(str(tapnum)).update(data)
         except:
             print("No tap found")
+    
+    def getSnapshot(ref):
+        snapshot = ref.get()
             
     
         # Remeber to add descriptions under the methods so users understand the 

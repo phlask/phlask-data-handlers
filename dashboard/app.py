@@ -43,13 +43,12 @@ def main():
     result = {}
     data = prod.getDb(water_prod)
     
-    for d in data:
+    for tap in data:
         try:
-            tapnum = d["tapnum"]
-            # print(tapnum)
+            tapnum = tap["tapnum"]
             if tapnum not in result:
                 result[tapnum] = {}
-            result[tapnum]=d
+            result[tapnum]=tap
         except:
             pass
 
