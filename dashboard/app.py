@@ -26,30 +26,38 @@ dashboard = Flask(__name__)
 def connectDB():
     return water_prod
 
-@dashboard.route("/")
-def main():
-    try:
-        #Static 4 taps for testing
-        water_prod_1=prod.getTap(water_prod, 1)
-        water_prod_2=prod.getTap(water_prod, 2)
-        water_prod_3=prod.getTap(water_prod, 3)
-        water_prod_4=prod.getTap(water_prod, 4)
-        taps = [water_prod_1, water_prod_2, water_prod_3, water_prod_4]
-#------------------------------------------------------------------------------------------------#
-         # All taps for development
-    #     taps=[]
-    #     db_count = prod.get_count(water_prod)
-    #     for i in range(0, db_count):
-    #         taps_i = prod.get_tap(water_prod, i)
-    #         taps.append(taps_i)
+def time_it(func):
+    def wrapper(*args, **kwargs):
+        import time
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        end = time.perf_counter()
+        run_time = end - start
+        print(f"Finished {func.__name__!r} in {run_time:.4f} secs")
+        return result
+    return wrapper
 
-        return render_template("index.html", taps=taps)
-    except:
-        pass
+@dashboard.route("/")
+@time_it
+def main():
+    result = {}
+    data = prod.getDb(water_prod)
+    
+    for d in data:
+        try:
+            tapnum = d["tapnum"]
+            # print(tapnum)
+            if tapnum not in result:
+                result[tapnum] = {}
+            result[tapnum]=d
+        except:
+            pass
+
+    return render_template("index.html", taps=result)
 
 @dashboard.route("/addtap", methods = ['GET','POST'])
 def addtapp():
-    tapcount = prod.get_count(water_prod)
+    tapcount = prod.getCount(water_prod)
     if request.method == 'GET':
         return render_template("addtap.html", tap = {})
     if request.method == 'POST':
@@ -109,18 +117,13 @@ def addtapp():
 @dashboard.route('/updatetap/<int:tapnum>', methods = ['GET','POST'])
 def updatetap(tapnum):
     tp=[]
-    db=prod.get_db(water_prod) 
+    db=prod.getDb(water_prod) 
     if request.method == 'GET':
         try:
             tp = prod.getTap(water_prod, tapnum)
             return render_template("addtap.html", tap = tp)
         except:
             pass
-        # for tap in db:
-        #     if tap["tapnum"] == tapnum:
-        #         prod.get_tap(water_prod,tapnum)
-        #         tp.append(tap)
-        # return render_template("addtap.html", tap = tp)
       
     if request.method == 'POST':
         try:
@@ -260,7 +263,7 @@ def viewtap(tapnum):
 #     # Log the time taken for the endpoint 
 #     current_app.logger.info('%s ms %s %s %s', time_in_ms, request.method, request.path, dict(request.args))
 #     return response
-# once database is loaded cache it
+
 
 if(__name__ == "__main__"): 
     dbconn = connectDB()
