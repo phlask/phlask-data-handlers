@@ -19,8 +19,8 @@
 |   ├──frontend
 |      ├── src
 |           ├── App.tsx
-|           ├── Components
-│           └── Assets            <-- Required dependencies for usage
+|           ├── Components        <-- Source for all TypeScript React components
+│           └── Assets            
 |      └── index.html
 |   ├──docker-compose.yml
 |   ├──Dockerfile                 <-- Dockerfile defining container for local dev and deploy
