@@ -58,6 +58,7 @@ $ docker compose up
 4. Then go to your browser and go to "http://localhost:5137/" to view and use the dashboard
 
 <br/>
+
 ### Flask (alternative)
 
 1. Start up terminal and CD in to the dashboard/backend directory 
@@ -80,5 +81,8 @@ if(__name__ == "__main__"):
 
 7. Once packages have updated run "npm run dev"
 8. Then go to your browser and go to "http://localhost:5137/" to view and use the dashboard
+
+
 ### Home Screen
 ![](https://github.com/ojimba01/phlask-admin/blob/main/readme/dashboard_index.gif)
+***This home screen is deprecated and will be updated soon
