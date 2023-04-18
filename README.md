@@ -59,12 +59,18 @@ $ docker compose up
 
 <br/>
 ### Flask (alternative)
+
 1. Start up terminal and CD in to the dashboard/backend directory 
 2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
-3. Then run the following script
+3. Then run the following: "python server.py" in the dashboard/backend directory 
 
-```terminal
-$ flask run
+*** Make Sure to Uncomment this line in server.py before step 3
+
+```python
+if(__name__ == "__main__"): 
+    dbconn = connectDB()
+    dashboard.run(host='0.0.0.0', port=int(os.environ.get('PORT',5000)), debug=True)
+
 ```
 4. Then go to your browser and go to "http://127.0.0.1:5000/" to make sure the API is working fine
 
@@ -73,6 +79,6 @@ $ flask run
 6. Make sure you are using Node 19 and run "npm install"
 
 7. Once packages have updated run "npm run dev"
-
+8. Then go to your browser and go to "http://localhost:5137/" to view and use the dashboard
 ### Home Screen
 ![](https://github.com/ojimba01/phlask-admin/blob/main/readme/dashboard_index.gif)
