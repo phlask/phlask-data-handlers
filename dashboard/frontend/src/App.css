@@ -1,0 +1,134 @@
+/* Default Style */
+/* 
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Dashboard Style */
+/* .dashboard-container {
+  background-color: #f4f6f9;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  width: 100%;
+} */
+
+.dashboard-title {
+  color: #4a4a4a;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-table {
+  background-color: #fff;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.dashboard-header {
+  background-color: #3298dc;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* make the buttons for edit and delete on the same line */
+#editButton, #deleteButton {
+  display: inline-block;
+  margin: 0 0.5rem;
+  /* give alternative color from table for buttons */
+}
+
+#editButton{
+  /* make background light blue */
+  background-color: #3298dc; /* Blue */
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.5rem 0.5rem;
+  cursor: pointer;
+  /* give shadow over hover */
+  transition: 0.3s;
+}
+
+#editButton:hover {
+  /* make background color dark blue */
+  background-color: #1e7eb8; /* Darker Blue */
+  color: white;
+}
+/* do the same with the delete button but with red */
+
+#deleteButton{
+  /* make background light red */
+  background-color: #e3342f; /* Red */
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.5rem 0.5rem;
+  cursor: pointer;
+  /* give shadow over hover */
+  transition: 0.3s;
+}
+
+#deleteButton:hover {
+  /* make background color dark red */
+  background-color: #cc1f1a; /* Darker Red */
+  color: white;
+}

@@ -1,1 +1,4 @@
 phlask.json
+.pyc
+__pycache__/
+*.py

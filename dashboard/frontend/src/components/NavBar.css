@@ -1,0 +1,74 @@
+.navBar {
+  height: 5%;
+  background-color: #333;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navWrapper {
+  margin-right: auto; /* move this container to the left side */
+  padding: 0 15px;
+}
+.navWrapper a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navWrapper a:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: #555;
+  color: white;
+}
+
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  padding: 0 15px;
+}
+
+.navItem a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.navItem a:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: #555;
+  color: white;
+}
+
+.toggleButton {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.toggleButton:hover {
+  background-color: #45a049;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+

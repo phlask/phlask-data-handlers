@@ -1,0 +1,26 @@
+
+.Dashboard {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* .Dashboard {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    width: 100%;
+  } */
+
+  /* .dashboard-container {
+    background-color: #f4f6f9;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    width: 100%;
+  } */

@@ -3,18 +3,12 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 import os
-import json
-from dotenv import load_dotenv
-from pathlib import Path
 
-# env_path = Path('.') / '.env'
-# load_dotenv(dotenv_path=env_path)
-
-json_data = json.loads(os.getenv('FIREBASE_CREDENTIALS'))
+json_data = None
 
 #----------------------------------------------------------------------------------------------------------------------
 # Prod database URL's
-pointer_url = 'https://phlask-pyrebase-default-rtdb.firebaseio.com/'
+pointer_url = "https://phlask-web-map-food-hours.firebaseio.com/"
 prod_water_url_live = "https://phlask-web-map-prod-water-live.firebaseio.com/"
 prod_water_url_verify = "https://phlask-web-map-prod-water-verify.firebaseio.com/"
 prod_food_url_live = 'https://phlask-web-map-prod-food-live.firebaseio.com/'
@@ -45,13 +39,27 @@ test_bathroom_url_live = "https://phlask-web-map-test-bathroom-live.firebaseio.c
 test_bathroom_url_verify = "https://phlask-web-map-test-bathroom-verify.firebaseio.com/"
 #----------------------------------------------------------------------------------------------------------------------
 #creds for initializing firebase admin
+try :
+    import json
+    with open('phlask.json') as f:
+        json_data = json.load(f)
+
+# if there is no json file, then this will use the environment variable
+
+except FileNotFoundError:
+    json_data = os.getenv('FIREBASE_CREDENTIALS')
+
 cred = credentials.Certificate(json_data)
-# cred = credentials.Certificate('ENTER PATH TO FIREBASE CREDENTIALS HERE')
-firebase_admin.initialize_app(cred, { 'databaseURL': 'https://phlask-pyrebase-default-rtdb.firebaseio.com/' })
+# firebase_admin.initialize_app(cred, { 'databaseURL': 'https://phlask-pyrebase-default-rtdb.firebaseio.com/' })
+
+def get_firebase_url(dev_type, data_type, live_type):
+    return f'https://phlask-web-map-{dev_type}-{data_type}-{live_type}.firebaseio.com/'
+
+
 #----------------------------------------------------------------------------------------------------------------------
 # initialize firebase admin Prod DB's
 pointer_init =  firebase_admin.initialize_app(cred, { 'databaseURL': pointer_url}, name="pointer_app")
-prod_water_live=firebase_admin.initialize_app(cred, { 'databaseURL': prod_water_url_live }, name="prod_water_live") #name is the app name
+prod_water_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod","water","live") }, name="prod_water_live") #name is the app name
 prod_food_live=firebase_admin.initialize_app(cred, { 'databaseURL': prod_food_url_live }, name="prod_food_live") #name is the app name
 prod_forage_live=firebase_admin.initialize_app(cred, { 'databaseURL': prod_forage_url_live }, name="prod_forage_live") #name is the app name
 prod_bathroom_live=firebase_admin.initialize_app(cred, { 'databaseURL': prod_bathroom_url_live }, name="prod_bathroom_live") #name is the app name
@@ -92,11 +100,12 @@ class prodAdmin:
         self.food_db_live = prod_food_db_live
         self.forage_db_live = prod_forage_db_live
         self.bathroom_db_live = prod_bathroom_db_live
-        
     def getDb(ref):
         ref_db = ref.get()
         return ref_db
-
+    def setDb(ref):
+        ref_db = ref.set()
+        return ref_db
     def getChangedData(ref,url):
         changed = ref.get_if_changed(url)
         changed_dict_list = changed[1]
@@ -109,7 +118,6 @@ class prodAdmin:
             if dict:
                 count += 1
         print(count)
-
     def dbComparison(ref, alt_ref):
         ref_data = prodAdmin.getDb(ref)
         alt_ref_data = prodAdmin.getDb(alt_ref)
@@ -117,7 +125,6 @@ class prodAdmin:
             print("The databases are the same")
         else:
             print("The databases are not the same")
-
     def updateChangedDbIter(ref, url, iterate: str):
         changed=prodAdmin.getChangedData(ref,url)
         count = 0
@@ -126,7 +133,6 @@ class prodAdmin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-
     def updateChangedDb(ref, url):
         changed=prodAdmin.getChangedData(ref,url)
         count = 0
@@ -134,7 +140,6 @@ class prodAdmin:
             ref.update({count: dict})
             count += 1
             print(count)
-
     def updateDb(ref, alt_ref):
         alt_ref_data= prodAdmin.getDb(alt_ref)
         count = 0
@@ -142,7 +147,6 @@ class prodAdmin:
             ref.update({count: dict})
             count += 1
             print(count)
-
     def updateDbIter(ref, alt_ref, iterate: str):
         alt_ref_data= prodAdmin.getDb(alt_ref)
         count = 0
@@ -151,14 +155,11 @@ class prodAdmin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-
     def deleteNode(ref):
         for node in ref.get():
             ref.child(node).delete()
-
     def addToDb(ref, data):
         ref.push(data)
-    
     def getCount(ref):
         count = 0
         for dict in prodAdmin.getDb(ref):
@@ -176,24 +177,17 @@ class prodAdmin:
                    pass
         except:
             pass
-
     def deleteTap(ref, tapnum):
         try:
             ref.child(str(tapnum)).delete()
+                    
         except:
             print("No tap found")
-
     def updateTap(ref, tapnum, data):
         try:
             ref.child(str(tapnum)).update(data)
         except:
             print("No tap found")
-
-    def dbListener(ref, url):
-        # for 30 seconds listen for changes in the database
-        changed = ref.listen(url, timeout=30)
-        changed_dict_list = changed[1]
-        return changed_dict_list
             
 
 
@@ -203,11 +197,9 @@ class betaAdmin:
         self.food_db_live = beta_food_db_live
         self.forage_db_live = beta_forage_db_live
         self.bathroom_db_live = beta_bathroom_db_live
-
     def getDb(ref):
         ref_db = ref.get()
         return ref_db
-
     def getChangedData(ref,url):
         changed = ref.get_if_changed(url)
         changed_dict_list = changed[1]
@@ -220,7 +212,6 @@ class betaAdmin:
             if dict:
                 count += 1
         print(count)
-
     def dbComparison(ref, alt_ref):
         ref_data = betaAdmin.getDb(ref)
         alt_ref_data = betaAdmin.getDb(alt_ref)
@@ -228,7 +219,6 @@ class betaAdmin:
             print("The databases are the same")
         else:
             print("The databases are not the same")
-
     def updateChangedDbIter(ref, url, iterate: str):
         changed=betaAdmin.getChangedData(ref,url)
         count = 0
@@ -237,7 +227,6 @@ class betaAdmin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-
     def updateChangedDb(ref, url):
         changed=betaAdmin.getChangedData(ref,url)
         count = 0
@@ -245,7 +234,6 @@ class betaAdmin:
             ref.update({count: dict})
             count += 1
             print(count)
-
     def updateDb(ref, alt_ref):
         alt_ref_data= betaAdmin.getDb(alt_ref)
         count = 0
@@ -253,7 +241,6 @@ class betaAdmin:
             ref.update({count: dict})
             count += 1
             print(count)
-
     def updateDbIter(ref, alt_ref, iterate: str):
         alt_ref_data= betaAdmin.getDb(alt_ref)
         count = 0
@@ -262,14 +249,19 @@ class betaAdmin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-
     def deleteNode(ref):
         for node in ref.get():
             ref.child(node).delete()
-
+    def deleteTap(ref, tapnum):
+        taps = betaAdmin.getDb(ref)
+        for tap in taps:
+            try:
+                if tap['tapnum'] == tapnum:
+                    ref.child(tap).delete()
+            except:
+                continue
     def addToDb(ref, data):
         ref.push(data)
-
     def getCount(ref):
         count = 0
         for dict in betaAdmin.getDb(ref):
@@ -287,26 +279,19 @@ class betaAdmin:
                    pass
         except:
             pass
-
     def deleteTap(ref, tapnum):
         try:
-            ref.child(str(tapnum)).delete()   
+            ref.child(str(tapnum)).delete()
+                    
         except:
             print("No tap found")
-
     def updateTap(ref, tapnum, data):
         try:
             ref.child(str(tapnum)).update(data)
         except:
             print("No tap found")
-    def dbListener(ref, url):
-        # for 30 seconds listen for changes in the database
-        changed = ref.listen(url, timeout=30)
-        changed_dict_list = changed[1]
-        return changed_dict_list
-        
-        
-
+            
+    
     
 
 class testAdmin:
@@ -315,11 +300,9 @@ class testAdmin:
         self.food_db_live = test_food_db_live
         self.forage_db_live = test_forage_db_live
         self.bathroom_db_live = test_bathroom_db_live
-
     def getDb(self, ref):
         ref_db = ref.get()
         return ref_db
-
     def getChangedData(ref,url):
         changed = ref.get_if_changed(url)
         changed_dict_list = changed[1]
@@ -332,7 +315,6 @@ class testAdmin:
             if dict:
                 count += 1
         print(count)
-
     def dbComparison(ref, alt_ref):
         ref_data = testAdmin.getDb(ref)
         alt_ref_data = testAdmin.getDb(alt_ref)
@@ -340,7 +322,6 @@ class testAdmin:
             print("The databases are the same")
         else:
             print("The databases are not the same")
-
     def updateChangedDbIter(ref, url, iterate: str):
         changed=testAdmin.getChangedData(ref,url)
         count = 0
@@ -349,7 +330,6 @@ class testAdmin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-
     def updateChangedDb(ref, url):
         changed=testAdmin.getChangedData(ref,url)
         count = 0
@@ -357,7 +337,6 @@ class testAdmin:
             ref.update({count: dict})
             count += 1
             print(count)
-
     def updateDb(ref, alt_ref):
         alt_ref_data= testAdmin.getDb(alt_ref)
         count = 0
@@ -365,7 +344,6 @@ class testAdmin:
             ref.update({count: dict})
             count += 1
             print(count)
-
     def updateDbIter(ref, alt_ref, iterate: str):
         alt_ref_data= testAdmin.getDb(alt_ref)
         count = 0
@@ -374,11 +352,9 @@ class testAdmin:
                 ref.update({count: dict})
                 count += 1
                 print(count)
-
     def deleteNode(ref):
         for node in ref.get():
             ref.child(node).delete()
-
     def addToDb(ref, data):
         ref.push(data)
 
@@ -410,11 +386,4 @@ class testAdmin:
             ref.child(str(tapnum)).update(data)
         except:
             print("No tap found")
-    
-    def getSnapshot(ref):
-        snapshot = ref.get()
             
-    
-        # Remeber to add descriptions under the methods so users understand the 
-        # of the use cases for the methods
-    
