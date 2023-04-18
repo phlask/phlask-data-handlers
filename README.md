@@ -11,17 +11,22 @@
 │   └── requirements.txt          <-- Required dependencies for usage 
 ├── aws_lambda                    <-- Componenets used in AWS for lambda functions
 ├── dashboard
-|   ├──templates                  <-- Flask template HTML files located here
+|   ├──backend
+|      ├── server.py              <-- Main Flask app located here
+|      ├── admin_classes.py
+|      ├── .env
+│      └── requirements.txt       <-- Required dependencies for usage 
+|   ├──frontend
+|      ├── src
+|           ├── App.tsx
+|           ├── Components
+│           └── Assets            <-- Required dependencies for usage
+|      └── index.html
 |   ├──docker-compose.yml
 |   ├──Dockerfile                 <-- Dockerfile defining container for local dev and deploy
 │   ├── admin_classes.py          <-- Custom Firebase's SDK Module Phlask use cases
-│   ├── app.py                    <-- Main Flask app located here
 │   ├── static                    <-- Static Assets for Webapp located here
 │   └── requirements.txt          <-- Required dependencies for usage 
-├── slack
-|   ├── bot.py                    <-- Slackbot database update script located here 
-│   └── requirements.txt          <-- Required dependencies for usage 
-├── .env                          <-- Input Credentials/Paths for Slackbot & Firebase(not for dashboard usage)
 ├── README.md
 └── cleanup.py                    <-- Script to clean up credentials and paths (call this before pushing commits)
 
@@ -50,25 +55,24 @@ $ docker build -t dashboard .
 ```terminal
 $ docker compose up
 ```
-4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+4. Then go to your browser and go to "http://127.0.0.1:5137/" to view and use the dashboard
 
-<br/>
-
-**Warning Initial Run time is about ~50 seconds using the "all tap" develeopment mode. For now, to develop faster on the UI, plesase use the "static" mode for faster reload times.
-
-<br/>
-
-**Auto-reload is also wonky ccurrentley with how docker is set up. Edits done in app.py will make the application reload but not edits made in the templates folder. So keep in mind, you must alter something (Simply a space or delete a space) in the app.py file to see frontend changes. We will be working on improving this very soon!
 <br/>
 ### Flask (alternative)
-1. Start up terminal and CD in to the dashboard directory
+1. Start up terminal and CD in to the dashboard/backend directory 
 2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
 3. Then run the following script
 
 ```terminal
 $ flask run
 ```
-4. Then go to your browser and go to "http://127.0.0.1:5000/" to view and use the dashboard
+4. Then go to your browser and go to "http://127.0.0.1:5000/" to make sure the API is working fine
+
+5. Then open a new terminal and CD into dashboard/backend
+
+6. Make sure you are using Node 19 and run "npm install"
+
+7. Once packages have updated run "npm run dev"
 
 ### Home Screen
 ![](https://github.com/ojimba01/phlask-admin/blob/main/readme/dashboard_index.gif)
