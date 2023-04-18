@@ -55,7 +55,7 @@ $ docker build -t dashboard .
 ```terminal
 $ docker compose up
 ```
-4. Then go to your browser and go to "http://127.0.0.1:5137/" to view and use the dashboard
+4. Then go to your browser and go to "http://localhost:5137/" to view and use the dashboard
 
 <br/>
 ### Flask (alternative)
