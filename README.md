@@ -65,7 +65,7 @@ $ docker compose up
 2. Run pip install -r requirements.txt (Python 2), or pip3 install -r requirements.txt (Python 3)
 3. Then run the following: "python server.py" in the dashboard/backend directory 
 
-*** Make Sure to Uncomment this line in server.py before step 3
+*** Make sure this line in server.py is uncommeted before step 3
 
 ```python
 if(__name__ == "__main__"): 
