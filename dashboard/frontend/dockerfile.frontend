@@ -1,0 +1,9 @@
+
+# Frontend builder
+FROM node:19 as frontend-builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+CMD ["npm", "run", "dev"]

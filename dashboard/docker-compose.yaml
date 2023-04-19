@@ -5,8 +5,8 @@ version: '3'
 services:
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./backend
+      dockerfile: dockerfile.backend
       target: backend-builder
     ports:
       - "5000:5000"
@@ -21,8 +21,8 @@ services:
 
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./frontend
+      dockerfile: dockerfile.frontend
       target: frontend-builder
     ports:
       - "5137:5137"
