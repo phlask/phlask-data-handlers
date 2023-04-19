@@ -49,13 +49,17 @@
 2. Run the following commands while docker is running (do not include "$" while running the commands below)
 
 ```terminal
-$ docker build -t dashboard .
+$ docker-compose up --build 
 ```
-3. Then run
+3. Then go to your browser and go to "http://localhost:5137/" to view and use the dashboard
+
+*** When you are done with development use ctrl + c
+
+*** Once the container and images are built you can just use "docker-compose up to" boot up the webapp without the build tag
+
 ```terminal
-$ docker compose up
+$ docker-compose up
 ```
-4. Then go to your browser and go to "http://localhost:5137/" to view and use the dashboard
 
 <br/>
 
