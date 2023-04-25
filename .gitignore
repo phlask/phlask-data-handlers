@@ -1,4 +1,4 @@
-phlask.json
+**/phlask.json
 .pyc
 __pycache__/
 *.py

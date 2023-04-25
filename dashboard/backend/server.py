@@ -49,7 +49,7 @@ def time_it(func):
 @time_it
 def main():
     result = {}
-    data = prod.getDb(water_prod)
+    data = prod().getDb(water_prod)
     
     for tap in data:
         try:
@@ -64,10 +64,10 @@ def main():
 @dashboard.route('/updatetap/<int:tapnum>', methods = ['GET', 'PUT'])
 def updatetap(tapnum):
     tp=[]
-    db=prod.getDb(water_prod) 
+    db=prod().getDb(water_prod) 
     if request.method == 'GET':
         try:
-            tp = prod.getTap(water_prod, tapnum)
+            tp = prod().getTap(water_prod, tapnum)
             return json.dumps(tp)
         except:
             pass
@@ -112,6 +112,6 @@ def deletetap(tapnum):
 
 # Uncomment this to run the app locally without docker! Dont forget to do similar configuration for the frontend!
 
-# if(__name__ == "__main__"): 
-#     dbconn = connectDB()
-#     dashboard.run(host='0.0.0.0', port=int(os.environ.get('PORT',5000)), debug=True)
+if(__name__ == "__main__"): 
+    dbconn = connectDB()
+    dashboard.run(host='0.0.0.0', port=int(os.environ.get('PORT',5000)), debug=True)
