@@ -39,8 +39,6 @@
 
 - AWS Lambda Function Code Snippet: The code snippet is utilized for the AWS lambda function to make daily updates to the Beta & Test databases
 
-- Firebase Slackbot: *Still in early development
-
 ## How to Run Dashboard Locally
 
 ### Docker (Recommended path for consistency across computers)
