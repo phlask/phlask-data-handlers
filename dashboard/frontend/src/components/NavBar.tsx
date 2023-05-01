@@ -35,4 +35,3 @@ const NavBar: React.FC<NavBarProps> = ({ toggleDashboard, toggleTapForm }: NavBa
 };
 
 export default NavBar;
-

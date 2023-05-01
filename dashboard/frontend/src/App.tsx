@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard';
 import NavBar from './components/NavBar';
 import TapForm, {TapFormProps} from './components/TapForm';
 import { Tap } from './components/Tap';
+import ChartComponent from "./components/ChartComponent";
 
 
 const App = () => {
@@ -30,6 +31,8 @@ const App = () => {
       </header>
       {dashboardVisible && <Dashboard />}
       {tapFormVisible && <TapForm onSubmit={handleSubmit} toggleTapForm={toggleTapForm} />}
+      <br />
+      <ChartComponent />
     </div>
   );
 };

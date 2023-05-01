@@ -1,10 +1,9 @@
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, render_template, jsonify
 from flask_cors import CORS
 import sys
 from dotenv import load_dotenv
 import json
 import os
-
 from admin_classes import prodAdmin as prod, betaAdmin as beta, testAdmin as test
 
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
@@ -61,6 +60,82 @@ def main():
             pass
     return json.dumps(result)
 
+
+# @dashboard.route('/chart-data')
+# def chart_data():
+#     data = {
+#         'labels': ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+#         'datasets': [
+#             {
+#                 'label': 'My First Dataset',
+#                 'data': [65, 59, 80, 81, 56, 55, 40],
+#                 'fill': False,
+#                 'borderColor': 'rgb(75, 192, 192)'
+#             }
+#         ]
+#     }
+#     return jsonify(data)
+
+
+
+# Initiating the count of taps in each database
+water_prod_count = prod().getCount(water_prod)
+food_prod_count = prod().getCount(food_prod)
+bathroom_prod_count = prod().getCount(bathroom_prod)
+forage_prod_count = prod().getCount(forage_prod)
+
+# Create a route to send the formated chart data to the frontend
+@dashboard.route('/chart-data')
+def chart_data():
+    data = {
+        'labels': ['Water DB', 'Food DB', 'Bathroom DB', 'Forage DB'],
+        'datasets': [
+            {
+                'label': 'Water Tap Count',
+                'data': [water_prod_count, 0, 0, 0],
+                'backgroundColor': 'rgba(75, 192, 192, 0.5)',
+                'borderColor': 'rgb(75, 192, 192)',
+                'borderWidth': 1,
+                'hoverBackgroundColor': 'rgb(75, 192, 192)',
+                'hoverBorderColor': 'rgba(75, 192, 192, 0.8)',
+                'hoverBorderWidth': 2,
+            },
+            {
+                'label': 'Food Tap Count',
+                'data': [0, food_prod_count, 0, 0],
+                'backgroundColor': 'rgba(255, 99, 132, 0.5)',
+                'borderColor': 'rgb(255, 99, 132)',
+                'borderWidth': 1,
+                'hoverBackgroundColor': 'rgb(255, 99, 132)',
+                'hoverBorderColor': 'rgba(255, 99, 132, 0.8)',
+                'hoverBorderWidth': 2,
+            },
+            {
+                'label': 'Bathroom Tap Count',
+                'data': [0, 0, bathroom_prod_count, 0],
+                'backgroundColor': 'rgba(54, 162, 235, 0.5)',
+                'borderColor': 'rgb(54, 162, 235)',
+                'borderWidth': 1,
+                'hoverBackgroundColor': 'rgb(54, 162, 235)',
+                'hoverBorderColor': 'rgba(54, 162, 235, 0.8)',
+                'hoverBorderWidth': 2,
+            },
+            {
+                'label': 'Forage Tap Count',
+                'data': [0, 0, 0, forage_prod_count],
+                'backgroundColor': 'rgba(255, 205, 86, 0.5)',
+                'borderColor': 'rgb(255, 205, 86)',
+                'borderWidth': 1,
+                'hoverBackgroundColor': 'rgb(255, 205, 86)',
+                'hoverBorderColor': 'rgba(255, 205, 86, 0.8)',
+                'hoverBorderWidth': 2,
+            }
+        ]
+    }
+    return jsonify(data)
+
+
+
 @dashboard.route('/updatetap/<int:tapnum>', methods = ['GET', 'PUT'])
 def updatetap(tapnum):
     tp=[]
@@ -109,6 +184,8 @@ def updatetap(tapnum):
 def deletetap(tapnum):
     prod.deleteTap(water_prod, str(tapnum))
     return redirect('/') 
+
+
 
 # Uncomment this to run the app locally without docker! Dont forget to do similar configuration for the frontend!
 
