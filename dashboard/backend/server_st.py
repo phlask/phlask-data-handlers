@@ -8,7 +8,7 @@ import numpy as np
 import time
 
 # Generate hashed passwords
-hashed_passwords = stauth.Hasher(['abc123', 'def456']).generate()
+hashed_passwords = stauth.Hasher(['abc123']).generate()
 
 # Replace passwords in config.yaml with hashed_passwords
 # We could automate this step if desired
