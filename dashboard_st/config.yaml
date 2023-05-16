@@ -1,0 +1,13 @@
+credentials:
+  usernames:
+    admin:
+      email: test@gmail.com
+      name: Phlask Admin
+      password: $2b$12$FThPCsS6spox227p28b/c.OX2pZQTU0hpMKkI709Uv4NoTfzFD0zG # currentley hashed, orignal name (abc123)
+cookie:
+  expiry_days: 30
+  key: random_signature_key # Must be string
+  name: random_cookie_name
+preauthorized:
+  emails:
+  - melsby@gmail.com
