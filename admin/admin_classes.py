@@ -216,10 +216,14 @@ class Admin:
 
     def updateDb(self, ref, dict_list):
         for record in dict_list:
-            tapnum = record.get('tapnum')
-            if tapnum is not None:
-                record = self.convert_json_fields(record)
-                self.updateTap(ref, tapnum, record)
+            if isinstance(record, dict):
+                tapnum = record.get('tapnum')
+                if tapnum is not None:
+                    record = self.convert_json_fields(record)
+                    self.updateTap(ref, tapnum, record)
+            else:
+                print(f'Invalid record: {record}')
+
 
 
 class prodAdmin(Admin):
