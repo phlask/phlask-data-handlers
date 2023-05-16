@@ -86,6 +86,20 @@ class Admin:
         self.food_db_live = food_db_live
         self.forage_db_live = forage_db_live
         self.bathroom_db_live = bathroom_db_live
+
+    # Method to convert json fields to strings specifically for the hours field
+    def convert_json_fields(self, record):
+        for key in record:
+            if isinstance(record[key], str) and key == 'hours':
+                # print(f'Original: {record[key]}')
+                try:
+                    record[key] = json.loads(record[key].replace("'", '"'))
+                    # print(f'Converted: {record[key]}')
+                except json.JSONDecodeError as e:
+                    print(f'Error converting field: {e}')
+                    pass
+        return record
+    
     # Method to get data from a given database reference
     def getDb(self, ref):
         ref_db = ref.get()
@@ -135,15 +149,6 @@ class Admin:
         changed = self.getChangedData(ref, url)
         count = 0
         for dict in changed:
-            ref.update({count: dict})
-            count += 1
-            print(count)
-
-    # Method to update a given database reference with data from another reference
-    def updateDb(self, ref, alt_ref):
-        alt_ref_data = self.getDb(alt_ref)
-        count = 0
-        for dict in alt_ref_data:
             ref.update({count: dict})
             count += 1
             print(count)
@@ -201,9 +206,21 @@ class Admin:
     # Method to update a specific tap from a given database reference based on their tapnum number
     def updateTap(self, ref, tapnum, data):
         try:
-            ref.child(str(tapnum)).update(data)
+            ref.child(str(int(tapnum))).update(data)
         except:
+            print(data)
             print("No tap found")
+
+        # Method to update a given database reference with data from another reference
+
+
+    def updateDb(self, ref, dict_list):
+        for record in dict_list:
+            tapnum = record.get('tapnum')
+            if tapnum is not None:
+                record = self.convert_json_fields(record)
+                self.updateTap(ref, tapnum, record)
+
 
 class prodAdmin(Admin):
     def __init__(self):
