@@ -46,7 +46,7 @@ const Table = ({ columns, data }: TableProps) => {
       <input value={filterValue || ""} onChange={(e) => setFilter(e.target.value || undefined)} placeholder={`Search ${column.Header}`} />
     );
   };
-const defaultColumn = useMemo(
+  const defaultColumn = useMemo(
     () => ({
       Filter: InputFilter,
     }),

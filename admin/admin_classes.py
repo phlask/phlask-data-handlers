@@ -22,38 +22,43 @@ cred = credentials.Certificate(json_data)
 
 def get_firebase_url(dev_type, data_type, live_type):
     return f'https://phlask-web-map-{dev_type}-{data_type}-{live_type}.firebaseio.com/'
+def initialize_firebase_app(app_name, cred, database_url):
+    try:
+        return firebase_admin.get_app(app_name)
+    except ValueError:
+        return firebase_admin.initialize_app(cred, {'databaseURL': database_url}, name=app_name)
 
 
 #----------------------------------------------------------------------------------------------------------------------
 # initialize firebase admin Prod DB's
-prod_water_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod","water","live") }, name="prod_water_live") #name is the app name
-prod_water_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "water", "verify") }, name="prod_water_verify") #name is the app name
-prod_food_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "food", "live") }, name="prod_food_live") #name is the app name
-prod_food_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "food", "verify") }, name="prod_food_verify") #name is the app name
-prod_forage_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "foraging", "live") }, name="prod_forage_live") #name is the app name
-prod_forage_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "foraging", "verify") }, name="prod_forage_verify") #name is the app name
-prod_bathroom_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "bathroom", "live") }, name="prod_bathroom_live") #name is the app name
-prod_bathroom_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("prod", "bathroom", "verify") }, name="prod_bathroom_verify") #name is the app name
+prod_water_live = initialize_firebase_app("prod_water_live", cred, get_firebase_url("prod","water","live"))
+prod_water_verify = initialize_firebase_app("prod_water_verify", cred, get_firebase_url("prod", "water", "verify"))
+prod_food_live = initialize_firebase_app("prod_food_live", cred, get_firebase_url("prod", "food", "live"))
+prod_food_verify = initialize_firebase_app("prod_food_verify", cred, get_firebase_url("prod", "food", "verify"))
+prod_forage_live = initialize_firebase_app("prod_forage_live", cred, get_firebase_url("prod", "foraging", "live"))
+prod_forage_verify = initialize_firebase_app("prod_forage_verify", cred, get_firebase_url("prod", "foraging", "verify"))
+prod_bathroom_live = initialize_firebase_app("prod_bathroom_live", cred, get_firebase_url("prod", "bathroom", "live"))
+prod_bathroom_verify = initialize_firebase_app("prod_bathroom_verify", cred, get_firebase_url("prod", "bathroom", "verify"))
 #----------------------------------------------------------------------------------------------------------------------
 # initialize firebase admin Beta DB's
-beta_water_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "water", "live" ) }, name="beta_water_live") #name is the app name
-beta_water_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "water", "verify") }, name="beta_water_verify") #name is the app name
-beta_food_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "food", "live") }, name="beta_food_live") #name is the app name
-beta_food_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "food", "verify") }, name="beta_food_verify") #name is the app name
-beta_forage_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "foraging", "live") }, name="beta_forage_live") #name is the app name
-beta_forage_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "foraging", "verify") }, name="beta_forage_verify") #name is the app name
-beta_bathroom_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "bathroom", "live") }, name="beta_bathroom_live") #name is the app name
-beta_bathroom_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("beta", "bathroom", "verify") }, name="beta_bathroom_verify") #name is the app name
+beta_water_live = initialize_firebase_app("beta_water_live", cred, get_firebase_url("beta", "water", "live"))
+beta_water_verify = initialize_firebase_app("beta_water_verify", cred, get_firebase_url("beta", "water", "verify"))
+beta_food_live = initialize_firebase_app("beta_food_live", cred, get_firebase_url("beta", "food", "live"))
+beta_food_verify = initialize_firebase_app("beta_food_verify", cred, get_firebase_url("beta", "food", "verify"))
+beta_forage_live = initialize_firebase_app("beta_forage_live", cred, get_firebase_url("beta", "foraging", "live"))
+beta_forage_verify = initialize_firebase_app("beta_forage_verify", cred, get_firebase_url("beta", "foraging", "verify"))
+beta_bathroom_live = initialize_firebase_app("beta_bathroom_live", cred, get_firebase_url("beta", "bathroom", "live"))
+beta_bathroom_verify = initialize_firebase_app("beta_bathroom_verify", cred, get_firebase_url("beta", "bathroom", "verify"))
 #----------------------------------------------------------------------------------------------------------------------
 # initialize firebase admin Test DB's
-test_water_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "water", "live") }, name="test_water_live") #name is the app name
-test_water_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "water", "verify") }, name="test_water_verify") #name is the app name
-test_food_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "food", "live") }, name="test_food_live") #name is the app name
-test_food_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "food", "verify") }, name="test_food_verify") #name is the app name
-test_forage_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "foraging", "live") }, name="test_forage_live") #name is the app name
-test_forage_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "foraging", "verify") }, name="test_forage_verify") #name is the app name
-test_bathroom_live=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "bathroom", "live") }, name="test_bathroom_live") #name is the app name
-test_bathroom_verify=firebase_admin.initialize_app(cred, { 'databaseURL': get_firebase_url("test", "bathroom", "verify") }, name="test_bathroom_verify") #name is the app name
+test_water_live = initialize_firebase_app("test_water_live", cred, get_firebase_url("test", "water", "live"))
+test_water_verify = initialize_firebase_app("test_water_verify", cred, get_firebase_url("test", "water", "verify"))
+test_food_live = initialize_firebase_app("test_food_live", cred, get_firebase_url("test", "food", "live"))
+test_food_verify = initialize_firebase_app("test_food_verify", cred, get_firebase_url("test", "food", "verify"))
+test_forage_live = initialize_firebase_app("test_forage_live", cred, get_firebase_url("test", "foraging", "live"))
+test_forage_verify = initialize_firebase_app("test_forage_verify", cred, get_firebase_url("test", "foraging", "verify"))
+test_bathroom_live = initialize_firebase_app("test_bathroom_live", cred, get_firebase_url("test", "bathroom", "live"))
+test_bathroom_verify = initialize_firebase_app("test_bathroom_verify", cred, get_firebase_url("test", "bathroom", "verify"))
 #----------------------------------------------------------------------------------------------------------------------
 # Database References for all of the prod databases
 prod_water_db_live = db.reference('/', app= prod_water_live)

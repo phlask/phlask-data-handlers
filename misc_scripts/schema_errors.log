@@ -1,101 +1,159 @@
+2023-05-12 22:55:21
 Validation Error:
-'hours' is a required property
+'' is not of type 'number'
 
-Failed validating 'required' in schema:
-    {'additionalProperties': False,
-     'properties': {'access': {'type': 'string'},
-                    'address': {'type': 'string'},
-                    'city': {'type': 'string'},
-                    'description': {'type': 'string'},
-                    'filtration': {'type': 'string'},
-                    'gp_id': {'type': 'string'},
-                    'handicap': {'type': 'string'},
-                    'hours': {'items': {'properties': {'close': {'properties': {'day': {'maximum': 6,
-                                                                                        'minimum': 0,
-                                                                                        'type': 'integer'},
-                                                                                'time': {'pattern': '\\d{4}',
-                                                                                         'type': 'string'}},
-                                                                 'required': ['day',
-                                                                              'time'],
-                                                                 'type': 'object'},
-                                                       'open': {'properties': {'day': {'maximum': 6,
-                                                                                       'minimum': 0,
-                                                                                       'type': 'integer'},
-                                                                               'time': {'pattern': '\\d{4}',
-                                                                                        'type': 'string'}},
-                                                                'required': ['day',
-                                                                             'time'],
-                                                                'type': 'object'}},
-                                        'required': ['close', 'open'],
-                                        'type': 'object'},
-                              'maxItems': 7,
-                              'minItems': 7,
-                              'type': 'array'},
-                    'lat': {'type': 'number'},
-                    'lon': {'type': 'number'},
-                    'norms_rules': {'type': 'string'},
-                    'organization': {'type': 'string'},
-                    'permanently_closed': {'type': 'boolean'},
-                    'phone': {'type': 'string'},
-                    'quality': {'type': 'string'},
-                    'service': {'type': 'string'},
-                    'statement': {'type': 'string'},
-                    'status': {'type': 'string'},
-                    'tap_type': {'type': 'string'},
-                    'tapnum': {'type': 'integer'},
-                    'vessel': {'type': 'string'},
-                    'zip_code': {'type': 'number'}},
-     'required': ['access',
-                  'address',
-                  'city',
-                  'description',
-                  'filtration',
-                  'gp_id',
-                  'handicap',
-                  'hours',
-                  'lat',
-                  'lon',
-                  'norms_rules',
-                  'organization',
-                  'permanently_closed',
-                  'phone',
-                  'quality',
-                  'service',
-                  'statement',
-                  'status',
-                  'tap_type',
-                  'tapnum',
-                  'vessel',
-                  'zip_code'],
-     'type': 'object'}
+Failed validating 'type' in schema['properties']['zip_code']:
+    {'type': 'number'}
 
-On instance:
-    {'access': 'TrashAcademy',
-     'active': 'N',
-     'address': 'Germantown Av WS 25ft N/O Glenwood Av F/S - 1',
-     'city': '',
-     'description': '',
-     'direction': 'S',
-     'filtration': '',
-     'gp_id': 'EiVHZXJtYW50b3duIEF2ZSwgUGhpbGFkZWxwaGlhLCBQQSwgVVNBIi4qLAoUChIJt1ADr0O4xokRpZgXCsIcYQQSFAoSCestArAAyMaJEc2larvr74Ri',
-     'handicap': '',
-     'ill': 'N',
-     'impressions': '23,085',
-     'lat': 39.9998,
-     'lon': -75.1478,
-     'norms_rules': '',
-     'organization': '',
-     'permanently_closed': False,
-     'quality': '8+ Missing - Incomplete',
-     'service': '',
-     'statement': '',
-     'tab_id': 299508,
-     'tap_type': '',
-     'tapnum': 263,
-     'unit': 97521,
-     'vessel': '',
-     'zip_code': 19133}
+On instance['zip_code']:
+    ''
 
+Schema:
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "access": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "city": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "filtration": {
+            "type": "string"
+        },
+        "gp_id": {
+            "type": "string"
+        },
+        "handicap": {
+            "type": "string"
+        },
+        "hours": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "close": {
+                        "type": "object",
+                        "properties": {
+                            "day": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 6
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "\\d{4}"
+                            }
+                        },
+                        "required": [
+                            "day",
+                            "time"
+                        ]
+                    },
+                    "open": {
+                        "type": "object",
+                        "properties": {
+                            "day": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 6
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "\\d{4}"
+                            }
+                        },
+                        "required": [
+                            "day",
+                            "time"
+                        ]
+                    }
+                },
+                "required": [
+                    "close",
+                    "open"
+                ]
+            },
+            "minItems": 7,
+            "maxItems": 7
+        },
+        "lat": {
+            "type": "number"
+        },
+        "lon": {
+            "type": "number"
+        },
+        "norms_rules": {
+            "type": "string"
+        },
+        "organization": {
+            "type": "string"
+        },
+        "permanently_closed": {
+            "type": "boolean"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "quality": {
+            "type": "string"
+        },
+        "service": {
+            "type": "string"
+        },
+        "statement": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "tap_type": {
+            "type": "string"
+        },
+        "tapnum": {
+            "type": "integer"
+        },
+        "vessel": {
+            "type": "string"
+        },
+        "zip_code": {
+            "type": "number"
+        }
+    },
+    "required": [
+        "access",
+        "address",
+        "city",
+        "description",
+        "filtration",
+        "gp_id",
+        "handicap",
+        "hours",
+        "lat",
+        "lon",
+        "norms_rules",
+        "organization",
+        "permanently_closed",
+        "phone",
+        "quality",
+        "service",
+        "statement",
+        "status",
+        "tap_type",
+        "tapnum",
+        "vessel",
+        "zip_code"
+    ]
+}
+
+2023-05-12 22:56:07
 Validation Error:
 Additional properties are not allowed ('active', 'direction', 'ill', 'impressions', 'tab_id', 'unit' were unexpected)
 
@@ -193,4 +251,149 @@ On instance:
      'unit': 97521,
      'vessel': '',
      'zip_code': 19133}
+
+Schema:
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "access": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "city": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "filtration": {
+            "type": "string"
+        },
+        "gp_id": {
+            "type": "string"
+        },
+        "handicap": {
+            "type": "string"
+        },
+        "hours": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "close": {
+                        "type": "object",
+                        "properties": {
+                            "day": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 6
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "\\d{4}"
+                            }
+                        },
+                        "required": [
+                            "day",
+                            "time"
+                        ]
+                    },
+                    "open": {
+                        "type": "object",
+                        "properties": {
+                            "day": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 6
+                            },
+                            "time": {
+                                "type": "string",
+                                "pattern": "\\d{4}"
+                            }
+                        },
+                        "required": [
+                            "day",
+                            "time"
+                        ]
+                    }
+                },
+                "required": [
+                    "close",
+                    "open"
+                ]
+            },
+            "minItems": 7,
+            "maxItems": 7
+        },
+        "lat": {
+            "type": "number"
+        },
+        "lon": {
+            "type": "number"
+        },
+        "norms_rules": {
+            "type": "string"
+        },
+        "organization": {
+            "type": "string"
+        },
+        "permanently_closed": {
+            "type": "boolean"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "quality": {
+            "type": "string"
+        },
+        "service": {
+            "type": "string"
+        },
+        "statement": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "tap_type": {
+            "type": "string"
+        },
+        "tapnum": {
+            "type": "integer"
+        },
+        "vessel": {
+            "type": "string"
+        },
+        "zip_code": {
+            "type": "number"
+        }
+    },
+    "required": [
+        "access",
+        "address",
+        "city",
+        "description",
+        "filtration",
+        "gp_id",
+        "handicap",
+        "hours",
+        "lat",
+        "lon",
+        "norms_rules",
+        "organization",
+        "permanently_closed",
+        "phone",
+        "quality",
+        "service",
+        "statement",
+        "status",
+        "tap_type",
+        "tapnum",
+        "vessel",
+        "zip_code"
+    ]
+}
 

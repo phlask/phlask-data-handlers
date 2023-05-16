@@ -61,22 +61,6 @@ def main():
     return json.dumps(result)
 
 
-# @dashboard.route('/chart-data')
-# def chart_data():
-#     data = {
-#         'labels': ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-#         'datasets': [
-#             {
-#                 'label': 'My First Dataset',
-#                 'data': [65, 59, 80, 81, 56, 55, 40],
-#                 'fill': False,
-#                 'borderColor': 'rgb(75, 192, 192)'
-#             }
-#         ]
-#     }
-#     return jsonify(data)
-
-
 
 # Initiating the count of taps in each database
 water_prod_count = prod().getCount(water_prod)
