@@ -4,6 +4,10 @@ credentials:
       email: test@gmail.com
       name: Phlask Admin
       password: $2b$12$FThPCsS6spox227p28b/c.OX2pZQTU0hpMKkI709Uv4NoTfzFD0zG # currentley hashed, orignal name (abc123)
+    admin_test:
+      email: test@gmail.com
+      name: Phlask Admin Test
+      password: $2b$12$FThPCsS6spox227p28b/c.OX2pZQTU0hpMKkI709Uv4NoTfzFD0zG # currentley hashed, orignal name (abc123)
 cookie:
   expiry_days: 30
   key: random_signature_key # Must be string

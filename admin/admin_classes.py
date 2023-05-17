@@ -60,32 +60,64 @@ test_forage_verify = initialize_firebase_app("test_forage_verify", cred, get_fir
 test_bathroom_live = initialize_firebase_app("test_bathroom_live", cred, get_firebase_url("test", "bathroom", "live"))
 test_bathroom_verify = initialize_firebase_app("test_bathroom_verify", cred, get_firebase_url("test", "bathroom", "verify"))
 #----------------------------------------------------------------------------------------------------------------------
-# Database References for all of the prod databases
+# Database References for all of the live/verify prod databases
+
+#Live
 prod_water_db_live = db.reference('/', app= prod_water_live)
 prod_food_db_live = db.reference('/', app= prod_food_live)
 prod_forage_db_live = db.reference('/', app= prod_forage_live)
 prod_bathroom_db_live = db.reference('/', app= prod_bathroom_live)
+
+#Verify
+prod_water_db_verify = db.reference('/', app= prod_water_verify)
+prod_food_db_verify = db.reference('/', app= prod_food_verify)
+prod_forage_db_verify = db.reference('/', app= prod_forage_verify)
+prod_bathroom_db_verify = db.reference('/', app= prod_bathroom_verify)
+
 #----------------------------------------------------------------------------------------------------------------------
 # Database References for all of the beta databases
+
+#Live
 beta_water_db_live = db.reference('/', app= beta_water_live)
 beta_food_db_live = db.reference('/', app= beta_food_live)
 beta_forage_db_live = db.reference('/', app= beta_forage_live)
 beta_bathroom_db_live = db.reference('/', app= beta_bathroom_live)
+
+#Verify
+beta_water_db_verify = db.reference('/', app= beta_water_verify)
+beta_food_db_verify = db.reference('/', app= beta_food_verify)
+beta_forage_db_verify = db.reference('/', app= beta_forage_verify)
+beta_bathroom_db_verify = db.reference('/', app= beta_bathroom_verify)
+
 #----------------------------------------------------------------------------------------------------------------------
 # Database References for all of the test databases
+
+#Live
 test_water_db_live = db.reference('/', app= test_water_live)
 test_food_db_live = db.reference('/', app= test_food_live)
 test_forage_db_live = db.reference('/', app= test_forage_live)
 test_bathroom_db_live = db.reference('/', app= test_bathroom_live)
+
+#Verify
+test_water_db_verify = db.reference('/', app= test_water_verify)
+test_food_db_verify = db.reference('/', app= test_food_verify)
+test_forage_db_verify = db.reference('/', app= test_forage_verify)
+test_bathroom_db_verify = db.reference('/', app= test_bathroom_verify)
+
 #----------------------------------------------------------------------------------------------------------------------
 
 class Admin:
     # Constructor that initializes the different databases for an Admin object
-    def __init__(self, water_db_live, food_db_live, forage_db_live, bathroom_db_live):
+    def __init__(self, water_db_live, food_db_live, forage_db_live, bathroom_db_live, water_db_verify, food_db_verify, forage_db_verify, bathroom_db_verify):
         self.water_db_live = water_db_live
         self.food_db_live = food_db_live
         self.forage_db_live = forage_db_live
         self.bathroom_db_live = bathroom_db_live
+        self.water_db_verify = water_db_verify
+        self.food_db_verify = food_db_verify
+        self.forage_db_verify = forage_db_verify
+        self.bathroom_db_verify = bathroom_db_verify
+
 
     # Method to convert json fields to strings specifically for the hours field
     def convert_json_fields(self, record):
@@ -228,14 +260,14 @@ class Admin:
 
 class prodAdmin(Admin):
     def __init__(self):
-        super().__init__(prod_water_db_live, prod_food_db_live, prod_forage_db_live, prod_bathroom_db_live)
+        super().__init__(prod_water_db_live, prod_food_db_live, prod_forage_db_live, prod_bathroom_db_live, prod_water_db_verify, prod_food_db_verify, prod_forage_db_verify, prod_bathroom_db_verify)
 
 
 class betaAdmin(Admin):
     def __init__(self):
-        super().__init__(beta_water_db_live, beta_food_db_live, beta_forage_db_live, beta_bathroom_db_live)
+        super().__init__(beta_water_db_live, beta_food_db_live, beta_forage_db_live, beta_bathroom_db_live, beta_water_db_verify, beta_food_db_verify, beta_forage_db_verify, beta_bathroom_db_verify)
 
 
 class testAdmin(Admin):
     def __init__(self):
-        super().__init__(test_water_db_live, test_food_db_live, test_forage_db_live, test_bathroom_db_live)
+        super().__init__(test_water_db_live, test_food_db_live, test_forage_db_live, test_bathroom_db_live, test_water_db_verify, test_food_db_verify, test_forage_db_verify, test_bathroom_db_verify)

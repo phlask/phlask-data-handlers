@@ -26,12 +26,12 @@ forage_test = testAdmin().forage_db_live
 
 
 # 3. Use the getDb() method to retrieve data from a specific database reference.
-data = prodAdmin().getDb(water_prod)
-print(data)
+# data = prodAdmin().getDb(water_prod)
+# print(data)
 
 
 # 4. Use the getTap() method to retrieve data from a specific tap number.
-food = prodAdmin().getDb(food_prod)
+# food = prodAdmin().getDb(food_prod)
 tap = prodAdmin().getTap(food_prod, 2)
 print(tap)
 
