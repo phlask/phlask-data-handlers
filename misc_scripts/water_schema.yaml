@@ -1,0 +1,67 @@
+type: object
+additionalProperties: false
+properties:
+  access: {type: string}
+  address: {type: string}
+  city: {type: string}
+  description: {type: string}
+  filtration: {type: string}
+  gp_id: {type: string}
+  handicap: {type: string}
+  hours:
+    type: array
+    items:
+      type: object
+      properties:
+        close:
+          type: object
+          properties:
+            day: {type: integer, minimum: 0, maximum: 6}
+            time: {type: string, pattern: "[0-9]{4}", minLength: 4, maxLength: 4}
+          required: [day, time]
+        open:
+          type: object
+          properties:
+            day: {type: integer, minimum: 0, maximum: 6}
+            time: {type: string, pattern: "[0-9]{4}", minLength: 4, maxLength: 4}
+          required: [day, time]
+      required: [close, open]
+    minItems: 7
+    maxItems: 7
+  lat: {type: number}
+  lon: {type: number}
+  norms_rules: {type: string}
+  organization: {type: string}
+  permanently_closed: {type: boolean}
+  phone: {type: string}
+  quality: {type: string}
+  service: {type: string}
+  statement: {type: string}
+  status: {type: string}
+  tap_type: {type: string}
+  tapnum: {type: integer}
+  vessel: {type: string}
+  zip_code: {type: number}
+required:
+  - access
+  - address
+  - city
+  - description
+  # - hours -- Not required in all cases
+  - filtration
+  - gp_id
+  - handicap
+  - lat
+  - lon
+  - norms_rules
+  - organization
+  - permanently_closed
+  - phone
+  - quality
+  - service
+  - statement
+  - status
+  - tap_type
+  - tapnum
+  - vessel
+  - zip_code
