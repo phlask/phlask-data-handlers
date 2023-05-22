@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+properties:
+  City: {type: string}
+  Common_Name: {type: string}
+  Genus: {type: string}
+  Planting Site Id: {type: integer}
+  Point_X: {type: number}
+  Point_Y: {type: number}
+  Postal Code: {type: integer}
+  Species: {type: string}
+  Street Address: {type: string}
+  Tree Id: {type: integer}
+  Updated At: {type: string, format: "date-time"}
+required:
+  - City
+  - Common_Name
+  - Genus
+  - Planting Site Id
+  - Point X
+  - Point Y
+  - Postal Code
+  - Species
+  - Street Address
+  - Tree Id
+  - Updated At

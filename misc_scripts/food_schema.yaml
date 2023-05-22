@@ -1,0 +1,53 @@
+type: object
+additionalProperties: false
+properties:
+  access: {type: string}
+  address: {type: string}
+  city: {type: string}
+  days_open: {type: string}
+  description: {type: string}
+  foodnum: {type: integer}
+  hours:
+    type: array
+    items:
+      type: object
+      properties:
+        close:
+          type: object
+          properties:
+            day: {type: integer, minimum: 0, maximum: 6}
+            time: {type: string, pattern: "[0-9]{4}", minLength: 4, maxLength: 4}
+          required: [day, time]
+        open:
+          type: object
+          properties:
+            day: {type: integer, minimum: 0, maximum: 6}
+            time: {type: string, pattern: "[0-9]{4}", minLength: 4, maxLength: 4}
+          required: [day, time]
+      required: [close, open]
+    minItems: 7
+    maxItems: 7
+  id_required: {type: string}
+  kid_only: {type: string}
+  lat: {type: number}
+  lon: {type: number}
+  organization: {type: string}
+  time_open: {type: string}
+  url: {type: string}
+  zip_code: {type: string, pattern: "[0-9]+"}
+required:
+  - access
+  - address
+  - city
+  - days_open
+  - description
+  - foodnum
+  # - hours -- Not required in all cases
+  - id_required
+  - kid_only
+  - lat
+  - lon
+  - organization
+  - time_open
+  - url
+  - zip_code

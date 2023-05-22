@@ -1,2 +1,6 @@
+python==3.11
+pandas
+pyyaml
+jsonschema
 firebase_admin==6.0.1
 boto3==1.26.69
