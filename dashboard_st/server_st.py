@@ -6,6 +6,8 @@ import json
 import pandas as pd
 import streamlit as st
 from dataclasses import dataclass
+MAPBOX_API_KEY = os.environ.get('MAPBOX_API_KEY')
+st.set_page_config(page_title="Phlask Admin Dashboard", page_icon=":earth_americas:", layout="centered")
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 # Add the project root directory to the Python path using insert() at position -1 
@@ -41,7 +43,10 @@ def parse_and_filter_dicts(dict_list, keys):
                     pass  # If decoding fails, leave the value as it is
 
         # If 'hours' is an empty dict, 'nan', or NaN, remove it
-        if 'hours' in record and (not record['hours'] or pd.isna(record['hours']) or record['hours'] == 'nan'):
+        if 'hours' in record and (
+            (isinstance(record['hours'], dict) and not record['hours']) or
+            (isinstance(record['hours'], str) and (not record['hours'] or record['hours'] == 'nan'))
+        ):
             del record['hours']
 
         # Filter out unnecessary keys
@@ -63,10 +68,17 @@ class Resource:
         for item in data_list:
             if item is not None:
                 record = {key: item.get(key) for key in self.allowed_keys if key in item}
+
+                # Convert 'hours' value to string if it's a list of dictionaries
+                if 'hours' in record and isinstance(record['hours'], list):
+                    try:
+                        record['hours'] = json.dumps(record['hours'])
+                    except:
+                        pass  # If encoding fails, leave the value as it is
+
                 records.append(record)
 
         return pd.DataFrame(records)
-
 
 # Define allowed keys for each resource
 allowed_water_keys = [
@@ -137,7 +149,9 @@ if resource_obj is None:
 
 df = resource_obj.create_dataframe(data)
 
-edited_df = st.experimental_data_editor(df, height=500, width=1000)
+edited_df = st.data_editor(df, height=500, width=1000, key="data_editor")
+st.write("Here's the session state:")
+st.write(st.session_state["data_editor"])
 
 # Handle the tapnum replacement dynamically
 tapnum_replacement = RESOURCE_DB_MAP.get(selected_resource, {}).get("tapnum", "tapnum")
@@ -155,3 +169,49 @@ if st.button('Update Firebase'):
     filtered_data = parse_and_filter_dicts(updated_data, resource_obj.allowed_keys)
 
     admin_obj.updateDb(getattr(admin_obj, db_attribute), filtered_data)
+
+
+#-----> ANALYTICS PORTION <-----#
+# import pydeck as pdk
+
+# assert 'lat' in df and 'lon' in df, "DataFrame should have 'lat' and 'lon' columns"
+# df = df.dropna(subset=['lat', 'lon'])
+# df = df[(df['lat'] != '') & (df['lon'] != '')]
+
+# st.header("Resource Density Map")
+# # Convert 'lat' and 'lon' to float
+# df['lat'] = df['lat'].astype(float)
+# df['lon'] = df['lon'].astype(float)
+
+# # Drop all other columns except 'lat' and 'lon'
+# df = df[['lat', 'lon']]
+
+# st.pydeck_chart(pdk.Deck(
+#     map_style=None,
+#     initial_view_state=pdk.ViewState(
+#         latitude=df['lat'].mean(),
+#         longitude=df['lon'].mean(),
+#         zoom=11,
+#         pitch=50,
+#     ),
+#     layers=[
+#         pdk.Layer(
+#             'HexagonLayer',
+#             data=df,
+#             get_position='[lon, lat]',
+#             radius=200,
+#             elevation_scale=4,
+#             elevation_range=[0, 1000],
+#             pickable=True,
+#             extruded=True,
+#         ),
+#         pdk.Layer(
+#             'ScatterplotLayer',
+#             data=df,
+#             get_position='[lon, lat]',
+#             get_color='[200, 30, 0, 160]',
+#             get_radius=200,
+#         ),
+#     ],
+# ))
+
