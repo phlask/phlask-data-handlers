@@ -10,12 +10,12 @@
 │   ├── test.py                   <-- Testing script for new functions added to module
 │   └── requirements.txt          <-- Required dependencies for usage 
 ├── aws_lambda                    <-- Componenets used in AWS for lambda functions
-├── dashboard
+├── dashboard_st
 |   ├──backend
-|      ├── server.py              <-- Main Flask app located here
-|      ├── admin_classes.py
-|      ├── .env
-│      └── requirements.txt       <-- Required dependencies for usage 
+|   ├── server.py              <-- Main Flask app located here
+|   ├── admin_classes.py
+|   ├── .env
+│   └── requirements.txt       <-- Required dependencies for usage 
 |   ├──frontend
 |      ├── src
 |           ├── App.tsx
